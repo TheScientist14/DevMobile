@@ -10,30 +10,27 @@ public class PlayerController : MonoBehaviour
 {
 	public enum InputType
 	{
-		Static,
-		StaticDynamic,
-		Dynamic,
+		Static = 0,
+		StaticDynamic = 1,
+		Dynamic = 2,
 	}
 
-    [SerializeField] private InputType m_InputType = InputType.Static;
+	private InputType m_InputType = InputType.Static;
 	private Vector2 m_MovementInputValue; // magnitude <= 1
 
-	// DEBUG
-	[SerializeField] TextMeshProUGUI m_XDisplay;
-	[SerializeField] TextMeshProUGUI m_YDisplay;
-	private Vector3 m_InitPosition;
-
+	[SerializeField] private float m_InputRadius = 100;
 	private bool m_IsPressed = false;
 
 	// static
-	[SerializeField] private GameObject m_VirtualGamepad;
-	private Vector2 m_GamepadPos = Vector2.up * 200 + Vector2.right * 400;
+	[SerializeField] private Transform m_VirtualGamepad;
+	private Vector2 m_GamepadPos;
 
 	// static dynamic
 	private bool m_IsInitialized = false;
-	private Vector2 m_InitPos = Vector2.zero;
+	private Vector2 m_InitMousePos = Vector2.zero;
 
-	[SerializeField] private float m_InputRadius = 100;
+	// dynamic
+	private Vector2 m_CurMousePos = Vector2.zero;
 
 	private Camera m_Camera;
 	private PlayerInput m_PlayerInput;
@@ -58,23 +55,26 @@ public class PlayerController : MonoBehaviour
 	{
 		SetInputType(InputType.StaticDynamic);
 
-		m_InitPosition = transform.position;
+		m_GamepadPos = m_Camera.WorldToScreenPoint(m_VirtualGamepad.position);
 	}
 
 	void Update()
 	{
-		// update player with input value
-		//transform.position = m_InitPosition + (Vector3)m_MovementInputValue;
+		// update input value
+		if(m_InputType == InputType.Dynamic)
+			_SetDelta(m_Camera.WorldToScreenPoint(transform.position), m_CurMousePos, m_InputRadius * 0.5f);
+	}
 
-		m_XDisplay.text = m_MovementInputValue.x.ToString();
-		m_YDisplay.text = m_MovementInputValue.y.ToString();
+	public void SetInputType(int iInputType)
+	{
+		SetInputType((InputType)iInputType);
 	}
 
 	public void SetInputType(InputType iInputType)
 	{
 		m_InputType = iInputType;
 
-		m_VirtualGamepad.SetActive(m_InputType == InputType.Static);
+		m_VirtualGamepad.gameObject.SetActive(m_InputType == InputType.Static);
 		m_IsPressed = false;
 		m_MovementInputValue = Vector2.zero;
 	}
@@ -86,22 +86,28 @@ public class PlayerController : MonoBehaviour
 
 		Debug.Log("position");
 		Vector2 curPos = m_PositionInput.ReadValue<Vector2>();
-		if(m_InputType == InputType.Static)
-			_SetDelta(m_GamepadPos, curPos, m_InputRadius);
-		else if(m_InputType == InputType.StaticDynamic)
+
+		switch(m_InputType)
 		{
-			if(!m_IsInitialized)
-			{
-				m_IsInitialized = true;
-				m_InitPos = curPos;
-			}
-			else
-				_SetDelta(m_InitPos, curPos, m_InputRadius);
-		}
-		else
-		{
-			// WRONG
-			// _SetDelta(m_Camera.WorldToScreenPoint(transform.position), curPos, m_InputRadius);
+			case InputType.Static:
+				_SetDelta(m_GamepadPos, curPos, m_InputRadius);
+				break;
+			case InputType.StaticDynamic:
+				if(!m_IsInitialized)
+				{
+					m_IsInitialized = true;
+					m_InitMousePos = curPos;
+				}
+				else
+					// move init pos when maxed
+					m_InitMousePos += _SetDelta(m_InitMousePos, curPos, m_InputRadius);
+				break;
+			case InputType.Dynamic:
+				m_CurMousePos = curPos;
+				break;
+			default:
+				Debug.LogError("Input type not implemented");
+				break;
 		}
 	}
 
@@ -117,18 +123,24 @@ public class PlayerController : MonoBehaviour
 			return;
 		}
 
+		m_CurMousePos = m_PositionInput.ReadValue<Vector2>();
 		Debug.Log("touched");
 	}
 
-	private void _SetDelta(Vector2 iInitPos, Vector2 iCurPos, float iMaxLength)
+	private Vector2 _SetDelta(Vector2 iInitPos, Vector2 iCurPos, float iMaxLength)
 	{
 		Vector2 delta = iCurPos - iInitPos;
-		delta /= iMaxLength;
+		Vector2 normedDelta = delta / iMaxLength;
 
-		if(delta.sqrMagnitude > 1)
-			m_MovementInputValue = delta.normalized;
-		else
-			m_MovementInputValue = delta;
+		float deltaSqrLength = normedDelta.sqrMagnitude;
+		if(deltaSqrLength > 1)
+		{
+			m_MovementInputValue = normedDelta / Mathf.Sqrt(deltaSqrLength);
+			return delta - m_MovementInputValue * iMaxLength;
+		}
+
+		m_MovementInputValue = normedDelta;
+		return Vector2.zero;
 	}
 
     public Vector2 GetMovementInputValue()
