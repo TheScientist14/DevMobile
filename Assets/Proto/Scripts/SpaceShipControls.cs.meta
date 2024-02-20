@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1782a229aa7abe945b4cb13f47329a48
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _muzzleOffset: {instanceID: 0}
+  - _missilePrefab: {fileID: 8110601056943077010, guid: 23c66b239289a364982d146b8123512c, type: 3}
+  - _deathUIToShow: {instanceID: 0}
+  - _scores: {fileID: 11400000, guid: 0c20ba2781ebd8c4aa983ddb1d32422a, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cf67275a831e24895713ff1f0c924b, type: 3}
+  m_Name: AsteroidsData
+  m_EditorClassIdentifier: 
+  _maxDistanceToSpaceShip: 20
+  _delayToTeleport: 2
+  _maxSpeed: 33
+  _maxTorn: 37
+  _debrisScale: 0.5
+  _maxBigAsteroidNb: 19
+  _maxSmallAsteroidNb: 35
+  BigAsteroidCounter: 11
+  SmallAsteroidCounter: 2
+  _minBigAsteroidCount: 10
+  _AsteroidScoreArray: 140000003200000064000000
+  _bigAsteroidScore: 150
+  _smallAsteroidScore: 225
