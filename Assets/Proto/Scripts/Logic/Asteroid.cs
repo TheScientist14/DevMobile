@@ -175,7 +175,7 @@ namespace Proto
 
             _debugDirection = Destination.ToVector3();
 
-            transform.position = (CamPos + Destination).ToVector3() + Vector3.forward * transform.position.z;
+            transform.position = (CamPos + Destination).ToVector3(transform.position.z);
             _timeToTeleportCounter = 0.0f;
         }
 
