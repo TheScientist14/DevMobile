@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class PoolBase : MonoBehaviour
 {
@@ -35,9 +34,6 @@ public class PoolBase : MonoBehaviour
             return tmp;
         }
         
-
-        
-
         return null;
     }
 
