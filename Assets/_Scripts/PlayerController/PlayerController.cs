@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour
 		Dynamic,
 	}
 
-	[SerializeField] private InputType m_InputType = InputType.Static;
+    [SerializeField] private InputType m_InputType = InputType.Static;
 	private Vector2 m_MovementInputValue; // magnitude <= 1
 
 	// DEBUG
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		// update player with input value
-		transform.position = m_InitPosition + (Vector3)m_MovementInputValue;
+		//transform.position = m_InitPosition + (Vector3)m_MovementInputValue;
 
 		m_XDisplay.text = m_MovementInputValue.x.ToString();
 		m_YDisplay.text = m_MovementInputValue.y.ToString();
@@ -129,4 +130,9 @@ public class PlayerController : MonoBehaviour
 		else
 			m_MovementInputValue = delta;
 	}
+
+    public Vector2 GetMovementInputValue()
+    {
+        return m_MovementInputValue;
+    }
 }
