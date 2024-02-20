@@ -32,15 +32,15 @@ public class PlayerMovement : MonoBehaviour
         transform.position += new Vector3(step.x * slowdown.x, step.y * slowdown.y, 0f);
     }
 
-    private Vector2 ComputeSlowdown(Vector2 step)
+    private Vector2 ComputeSlowdown(Vector2 iStep)
     {
         Vector2 slowdown;
-        if (step.x > 0)
+        if (iStep.x > 0)
             slowdown.x = EvaluateDirectionalSlow(transform.position.x, m_PlayerBounds.bounds.max.x);
         else
             slowdown.x = EvaluateDirectionalSlow(transform.position.x, m_PlayerBounds.bounds.min.x);
 
-        if (step.y > 0)
+        if (iStep.y > 0)
             slowdown.y = EvaluateDirectionalSlow(transform.position.y, m_PlayerBounds.bounds.max.y);
         else
             slowdown.y = EvaluateDirectionalSlow(transform.position.y, m_PlayerBounds.bounds.min.y);
@@ -48,15 +48,15 @@ public class PlayerMovement : MonoBehaviour
         return slowdown;
     }
 
-    private float EvaluateDirectionalSlow(float pos, float limit)
+    private float EvaluateDirectionalSlow(float iPos, float iLimit)
     {
         if (m_BoundsEffectThreshold > 0)
         {
-            return m_BoundsProximitySlowdown.Evaluate(Mathf.Abs(pos - limit) / m_BoundsEffectThreshold);
+            return m_BoundsProximitySlowdown.Evaluate(Mathf.Abs(iPos - iLimit) / m_BoundsEffectThreshold);
         }
         else
         {
-            return Mathf.Abs(pos - limit) > Mathf.Epsilon ? 1.0f : 0.0f;
+            return Mathf.Abs(iPos - iLimit) > Mathf.Epsilon ? 1.0f : 0.0f;
         }
     }
 }

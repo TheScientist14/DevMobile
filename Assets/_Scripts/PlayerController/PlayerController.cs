@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -84,7 +80,6 @@ public class PlayerController : MonoBehaviour
 		if(!m_IsPressed)
 			return;
 
-		Debug.Log("position");
 		Vector2 curPos = m_PositionInput.ReadValue<Vector2>();
 
 		switch(m_InputType)
@@ -117,14 +112,12 @@ public class PlayerController : MonoBehaviour
 
 		if(!m_IsPressed)
 		{
-			Debug.Log("released");
 			m_MovementInputValue = Vector2.zero;
 			m_IsInitialized = false;
 			return;
 		}
 
 		m_CurMousePos = m_PositionInput.ReadValue<Vector2>();
-		Debug.Log("touched");
 	}
 
 	private Vector2 _SetDelta(Vector2 iInitPos, Vector2 iCurPos, float iMaxLength)
