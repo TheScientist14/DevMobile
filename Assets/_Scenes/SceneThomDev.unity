@@ -590,6 +590,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437848023}
   m_CullTransparentMesh: 1
+--- !u!1 &1569279980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1569279981}
+  m_Layer: 0
+  m_Name: BulletContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1569279981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569279980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627698490
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,11 +786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ef018d0f65995418908ea359561de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InputType: 0
-  m_XDisplay: {fileID: 1627698492}
-  m_YDisplay: {fileID: 1437848025}
-  m_VirtualGamepad: {fileID: 0}
   m_InputRadius: 100
+  m_VirtualGamepad: {fileID: 0}
 --- !u!212 &1815983883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1025,17 +1053,13 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4764053328749618948, guid: 0eca013d52f3141458374120881bdb19, type: 3}
-      propertyPath: m_XDisplay
-      value: 
-      objectReference: {fileID: 1627698492}
-    - target: {fileID: 4764053328749618948, guid: 0eca013d52f3141458374120881bdb19, type: 3}
-      propertyPath: m_YDisplay
-      value: 
-      objectReference: {fileID: 1437848025}
-    - target: {fileID: 4764053328749618948, guid: 0eca013d52f3141458374120881bdb19, type: 3}
       propertyPath: m_VirtualGamepad
       value: 
-      objectReference: {fileID: 478931480}
+      objectReference: {fileID: 478931481}
+    - target: {fileID: 7277421869340145505, guid: 0eca013d52f3141458374120881bdb19, type: 3}
+      propertyPath: m_BulletContainer
+      value: 
+      objectReference: {fileID: 1569279981}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1110,3 +1134,4 @@ SceneRoots:
   - {fileID: 5905840514680852710}
   - {fileID: 478931481}
   - {fileID: 9172615481493094020}
+  - {fileID: 1569279981}
