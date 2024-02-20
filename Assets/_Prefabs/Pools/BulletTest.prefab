@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8316018010076447279}
   - component: {fileID: 1904865181677254682}
+  - component: {fileID: 7092125130516194849}
+  - component: {fileID: 5390177363682316521}
   m_Layer: 0
   m_Name: BulletTest
   m_TagString: Untagged
@@ -84,3 +86,87 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &7092125130516194849
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992499631788969424}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!68 &5390177363682316521
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992499631788969424}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.0131469965, y: -0.51730657}
+  - {x: -0.19980371, y: -0.47913057}
+  - {x: -0.39312017, y: -0.33545712}
+  - {x: -0.4867458, y: -0.1879997}
+  - {x: -0.5235069, y: -0.04184959}
+  - {x: -0.5003737, y: 0.05898141}
+  - {x: -0.47056594, y: 0.20223342}
+  - {x: -0.37825313, y: 0.33931544}
+  - {x: -0.19075117, y: 0.4739237}
+  - {x: 0.008079261, y: 0.5070601}
+  - {x: 0.26121795, y: 0.44313586}
+  - {x: 0.3876071, y: 0.3308829}
+  - {x: 0.44079334, y: 0.2586779}
+  - {x: 0.49715072, y: 0.15059789}
+  - {x: 0.51231545, y: 0.0012412071}
+  - {x: 0.46540922, y: -0.23055708}
+  - {x: 0.28731805, y: -0.4285604}
+  - {x: 0.018971682, y: -0.5072483}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

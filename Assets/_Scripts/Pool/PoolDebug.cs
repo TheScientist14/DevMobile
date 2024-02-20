@@ -33,7 +33,7 @@ public class PoolDebug : MonoBehaviour
         if (Input.touchCount > 0)
         {
             theTouch = Input.GetTouch(0);
-            if (theTouch.phase == TouchPhase.Ended)
+            if (theTouch.phase == TouchPhase.Stationary)
             {
                 SpawnBullet();
                 timeTouchEnded = Time.time;
@@ -50,7 +50,7 @@ public class PoolDebug : MonoBehaviour
             bullet.transform.rotation = transform.rotation;
             bullet.SetActive(true);
 
-            StartCoroutine(DeactivateBullet(bullet));
+            //StartCoroutine(DeactivateBullet(bullet));
         }
     }
 

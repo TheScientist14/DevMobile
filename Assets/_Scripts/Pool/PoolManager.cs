@@ -7,6 +7,7 @@ public class PoolManager : MonoBehaviour
     [SerializeField]
     private List<PoolBase> _poolsToInstantiate;
 
+
     private void Start()
     {
         InitPools();
