@@ -3,33 +3,27 @@ using UnityEngine;
 
 public class PoolBase : MonoBehaviour
 {
-
-    protected List<GameObject> _pooledObjects;
+    protected Queue<GameObject> _pooledObjects = new Queue<GameObject>();
 
     [SerializeField]
     protected GameObject _objectToPool;
 
     [SerializeField]
-    protected int _amountToPool;
+    protected int _amountToPool = 5;
 
     [SerializeField]
-    private bool _increasable;
+    private bool _increasable = true;
 
     public GameObject GetPooledObject()
     {
-        for (int i = 0; i < _pooledObjects.Count; i++)
-        {
-            if (!_pooledObjects[i].activeInHierarchy)
-            {
-                return _pooledObjects[i];
-            }
-        }
+        if (_pooledObjects.Count > 0)
+            return _pooledObjects.Dequeue();
 
         if (_increasable)
         {
             GameObject tmp = Instantiate(_objectToPool, transform);
 
-            _pooledObjects.Add(tmp);
+            _pooledObjects.Enqueue(tmp);
 
             return tmp;
         }
@@ -37,16 +31,25 @@ public class PoolBase : MonoBehaviour
         return null;
     }
 
+    public List<GameObject> GetPooledObjectsInList(int numberOfObjectNeeded)
+    {
+        List<GameObject> list = new List<GameObject>(numberOfObjectNeeded);
+        while (list.Count < numberOfObjectNeeded)
+        {
+            list.Add(GetPooledObject());
+        }
+        return list;
+    } 
+
     public void PopulatePool()
     {
-        _pooledObjects = new List<GameObject>();
         GameObject tmp;
 
         for (int i = 0; i < _amountToPool; i++)
         {
             tmp = Instantiate(_objectToPool, transform);
             tmp.SetActive(false);
-            _pooledObjects.Add(tmp);
+            _pooledObjects.Enqueue(tmp);
         }
     }
 

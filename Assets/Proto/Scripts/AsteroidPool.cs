@@ -28,9 +28,10 @@ namespace Proto {
             PopulatePool();
 
             int asteroidsToActivate = Math.Min(m_numberOfAsteroidOnStart, _amountToPool);
+            
             for (int i = 0; i < asteroidsToActivate; i++)
             {
-                _pooledObjects[i].SetActive(true);
+                
             }
         }
     }
