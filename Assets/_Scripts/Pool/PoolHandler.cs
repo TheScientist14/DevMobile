@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 [System.Serializable]
 public class PoolHandler

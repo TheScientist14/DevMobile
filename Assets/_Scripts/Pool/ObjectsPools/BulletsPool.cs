@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Proto;
 
-public class BulletsPool : PoolBase
+public class BulletsPool : PoolBase<BulletTest>
 {
     public static BulletsPool SharedInstance;
 

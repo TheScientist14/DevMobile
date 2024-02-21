@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolBase : MonoBehaviour
+public class PoolBase<T> : MonoBehaviour
+    where T : Poolable
 {
-    protected Queue<GameObject> _pooledObjects = new Queue<GameObject>();
+    protected Queue<T> _pooledObjects = new Queue<T>();
 
     [SerializeField]
-    protected GameObject _objectToPool;
+    protected T _objectToPool;
 
     [SerializeField]
     protected int _amountToPool = 5;
@@ -14,26 +15,44 @@ public class PoolBase : MonoBehaviour
     [SerializeField]
     private bool _increasable = true;
 
-    public GameObject GetPooledObject()
+    public T GetPooledObject()
     {
         if (_pooledObjects.Count > 0)
-            return _pooledObjects.Dequeue();
+        {
+            T ObjectToPool = _pooledObjects.Dequeue();
+            ObjectToPool.OnCreate();
+            return ObjectToPool;
+        }
 
         if (_increasable)
         {
-            GameObject tmp = Instantiate(_objectToPool, transform);
-
-            _pooledObjects.Enqueue(tmp);
-
+            T tmp = Instantiate(_objectToPool, transform);
+            tmp.OnCreate();
             return tmp;
         }
-        
         return null;
     }
 
-    public List<GameObject> GetPooledObjectsInList(int numberOfObjectNeeded)
+    public void UnloadObject(T objectToUnload)
     {
-        List<GameObject> list = new List<GameObject>(numberOfObjectNeeded);
+        if (objectToUnload is null) return;
+        _pooledObjects.Enqueue(objectToUnload);
+        objectToUnload.OnRecycle();
+    }
+
+    public void UnloadObjects(T[] objectsToUnload)
+    {
+        foreach (T objectToUnload in objectsToUnload)
+        {
+            if (objectToUnload is null) continue;
+            objectToUnload.OnRecycle();
+            _pooledObjects.Enqueue(objectToUnload);
+        }
+    }
+
+    public List<T> GetPooledObjectsInList(int numberOfObjectNeeded)
+    {
+        List<T> list = new List<T>(numberOfObjectNeeded);
         while (list.Count < numberOfObjectNeeded)
         {
             list.Add(GetPooledObject());
@@ -43,18 +62,21 @@ public class PoolBase : MonoBehaviour
 
     public void PopulatePool()
     {
-        GameObject tmp;
-
+        T tmp;
         for (int i = 0; i < _amountToPool; i++)
         {
             tmp = Instantiate(_objectToPool, transform);
-            tmp.SetActive(false);
+            tmp.gameObject.SetActive(false);
             _pooledObjects.Enqueue(tmp);
         }
     }
 
     public void ResetPool()
     {
+        foreach (var objInPool in _pooledObjects)
+        {
+            objInPool.OnLeavePool();
+        }
         _pooledObjects.Clear();
     }
    

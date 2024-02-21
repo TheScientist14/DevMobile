@@ -1,23 +1,18 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-public abstract class Poolable : MonoBehaviour, IPoolable
+public abstract class Poolable : MonoBehaviour
 {
-    public abstract T GetPoolObject<T>() where T : Poolable;
-
-    public abstract List<T> GetPooledObjects<T>(int NumberOfObjectsToPool) where T : Poolable;
-
-    public virtual void OnObjectPool()
+    public virtual void OnCreate()
     {
         gameObject.SetActive(true);
     }
 
-    public virtual void OnObjectUnpool()
+    public virtual void OnRecycle()
     {
         gameObject.SetActive(false);
     }
 
-    public virtual void OnLeavingPool()
+    public virtual void OnLeavePool()
     {
         Destroy(gameObject);
     }
