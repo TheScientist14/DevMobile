@@ -271,11 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreData: {fileID: 11400000, guid: 0c20ba2781ebd8c4aa983ddb1d32422a, type: 2}
---- !u!1 &460140240 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2284642101214000364, guid: 697784bdb6d8bdf4ebc59ed605a6546f, type: 3}
-  m_PrefabInstance: {fileID: 2284642099452745128}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &475876480
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9ba41c6f2753345a7096df674f5b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToPool: {fileID: 460140240}
+  _objectToPool: {fileID: 2284642101214000353, guid: 697784bdb6d8bdf4ebc59ed605a6546f, type: 3}
   _amountToPool: 20
   _increasable: 1
   m_numberOfAsteroidOnStart: 5
@@ -1473,7 +1468,7 @@ PrefabInstance:
     - target: {fileID: 8318540881544451455, guid: 28d568427d525be4a94422bd5e09d02c, type: 3}
       propertyPath: _objectToPool
       value: 
-      objectReference: {fileID: 8110601056943077010, guid: 23c66b239289a364982d146b8123512c, type: 3}
+      objectReference: {fileID: 2463555951116763931, guid: 23c66b239289a364982d146b8123512c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

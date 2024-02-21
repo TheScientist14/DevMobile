@@ -40,15 +40,10 @@ public class PoolDebug : MonoBehaviour
 
     private void SpawnBullet()
     {
-        GameObject bullet = BulletsPool.SharedInstance.GetPooledObject();
-        if (bullet != null)
-        {
-            bullet.transform.position = transform.position;
-            bullet.transform.rotation = transform.rotation;
-            bullet.SetActive(true);
-
-            //StartCoroutine(DeactivateBullet(bullet));
-        }
+        GameObject bullet = BulletsPool.SharedInstance.GetPooledObject().gameObject;
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = transform.rotation;
+        bullet.SetActive(true);
     }
 
     private IEnumerator DeactivateBullet(GameObject gameObject) 

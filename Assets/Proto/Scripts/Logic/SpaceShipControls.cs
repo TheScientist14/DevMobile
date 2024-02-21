@@ -105,10 +105,10 @@ namespace Proto
             if (_ShootDelayCounter >= _shootingDelay)
             {
                 _ShootDelayCounter = 0;
-                GameObject bullet = BulletsPool.SharedInstance.GetPooledObject();
+                GameObject bullet = BulletsPool.SharedInstance.GetPooledObject().gameObject;
                 bullet.transform.position = _muzzleOffset.position;
                 bullet.transform.rotation = _muzzleOffset.rotation;
-                bullet.SetActive(true);
+                // bullet.SetActive(true);
                 // Instantiate(_missilePrefab, _muzzleOffset.position, _muzzleOffset.rotation);
                 return true;
             }

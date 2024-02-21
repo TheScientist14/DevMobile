@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Proto {
-    public class AsteroidPool : PoolBase
+    public class AsteroidPool : PoolBase<Asteroid>
     {
         public static AsteroidPool SharedInstance;
 
@@ -31,7 +31,8 @@ namespace Proto {
             
             for (int i = 0; i < asteroidsToActivate; i++)
             {
-                
+                Asteroid asteroid = GetPooledObject();
+                asteroid.gameObject.SetActive(true);
             }
         }
     }

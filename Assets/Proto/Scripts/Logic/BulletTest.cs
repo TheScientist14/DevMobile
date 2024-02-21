@@ -40,8 +40,9 @@ namespace Proto
             _rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
-        void OnEnable()
+        public void InitializeBullet()
         {
+            gameObject.SetActive(true);
             _rigidbody2D.velocity = transform.up * _Speeeeeeeeed;
             // Destroy(gameObject, _LifeTime);
             StartCoroutine(DeactivateCoroutine());
@@ -52,10 +53,14 @@ namespace Proto
             yield return new WaitForSeconds(_LifeTime);
             gameObject.SetActive(false);
         }
-
-        private void OnDisable()
+        public override void OnCreate()
+        {
+            
+        }
+        public override void OnRecycle()
         {
             StopAllCoroutines();
+            base.OnRecycle();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

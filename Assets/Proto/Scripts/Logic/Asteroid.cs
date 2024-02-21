@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Proto
 {
     [ExecuteInEditMode]
-    public class Asteroid : MonoBehaviour, IDamageable
+    public class Asteroid : Poolable, IDamageable
     {
         [SerializeField]
         private int division;
@@ -81,16 +81,12 @@ namespace Proto
                     for (int i = 0; i < division; i++)
                     {
                         // GameObject clone = Instantiate(gameObject);
-                        GameObject clone = AsteroidPool.SharedInstance.GetPooledObject();
-                        clone.SetActive(true);
-                        clone.transform.position = transform.position;
-                        clone.transform.localScale = transform.localScale;
-                        clone.transform.localScale *= Params.DebrisScale; // TODO CHECK
-                        Asteroid asteroid = clone.GetComponent<Asteroid>();
-                        if (asteroid != null)
-                        {
-                            asteroid.divideNb = divideNb;
-                        }
+                        Asteroid asteroidClone = AsteroidPool.SharedInstance.GetPooledObject();
+                        asteroidClone.gameObject.SetActive(true);
+                        asteroidClone.transform.position = transform.position;
+                        asteroidClone.transform.localScale = transform.localScale;
+                        asteroidClone.transform.localScale *= Params.DebrisScale; // TODO CHECK
+                        asteroidClone.divideNb = divideNb;
                     }
                 }
             }
@@ -100,15 +96,8 @@ namespace Proto
                 ScoreData.AddScore(Params.GetAsteroidScore(divideNb));
                 divideNb = 0;
                 // GameObject clone = Instantiate(gameObject);
-                GameObject clone = AsteroidPool.SharedInstance.GetPooledObject();
-                Asteroid asteroid = clone.GetComponent<Asteroid>();
-                if (asteroid != null)
-                {
-                    asteroid.divideNb = divideNb;
-                } else
-                {
-                    Debug.Log("PTN DE TA MERE");
-                }
+                Asteroid clone = AsteroidPool.SharedInstance.GetPooledObject();
+                clone.divideNb = divideNb;
 
                 // TODO base spawning on render bounds
                 clone.transform.position = Camera.main.transform.position;
