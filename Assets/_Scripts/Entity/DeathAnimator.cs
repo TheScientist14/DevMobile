@@ -11,11 +11,22 @@ public class DeathAnimator : MonoBehaviour
 	void Start()
 	{
 		LivingEntity entity = GetComponent<LivingEntity>();
-		entity.OnDamaged += TriggerExplosion;
+		entity.OnDeath += TriggerDeathAnimation;
 	}
 
-	private void TriggerExplosion()
+	private void TriggerDeathAnimation()
 	{
+		PlayerMovement playerMovement;
+		if(TryGetComponent(out playerMovement))
+			playerMovement.enabled = false;
+		MovingEntity movingEntity;
+		if(TryGetComponent(out movingEntity))
+			movingEntity.enabled = false;
+		ShootingEntity shootingEntity;
+		if(TryGetComponent(out shootingEntity))
+			shootingEntity.enabled = false;
+
 		m_VFXAnimator.SetTrigger("Explode");
+		Destroy(gameObject, 0.7f);
 	}
 }

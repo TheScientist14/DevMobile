@@ -16,6 +16,9 @@ public class LivingEntity : MonoBehaviour
 
 	public void UpdateLife(float iLifeDelta)
 	{
+		if(m_Life <= 0 && iLifeDelta <= 0)
+			return;
+
 		m_Life = Mathf.Clamp(m_Life + iLifeDelta, 0, m_MaxLife);
 
 		if(iLifeDelta < 0)
@@ -26,6 +29,9 @@ public class LivingEntity : MonoBehaviour
 
 	public void Die()
 	{
+		if(m_Life <= 0)
+			return;
+
 		m_Life = 0;
 		OnDeath?.Invoke();
 	}

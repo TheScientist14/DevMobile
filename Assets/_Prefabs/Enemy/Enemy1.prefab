@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 5349131421759535735}
   - component: {fileID: 6335023877213901155}
   - component: {fileID: 4066662907001255182}
+  - component: {fileID: 2326051965820310635}
   m_Layer: 7
   m_Name: Enemy1
   m_TagString: Untagged
@@ -144,6 +145,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2194082105753735024}
+  - {fileID: 76493298146635350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7480509567478624809
@@ -347,3 +349,60 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2326051965820310635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316762691176511453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc387c2a245f3e04fb26e4a78e34b0c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsShooting: 1
+  m_FireRate: 6
+  m_BulletLifetime: 5
+  m_BulletPrefab: {fileID: 2625708485076692693, guid: ad3354b0a85bfb744a8baac61ecd81f9, type: 3}
+  m_BulletContainer: {fileID: 0}
+  m_Muzzles:
+  - {fileID: 76493298146635350}
+  m_ActiveMuzzleIndexesPerShot:
+  - m_MuzzlesIndexes: 00000000
+  - m_MuzzlesIndexes: 00000000
+  - m_MuzzlesIndexes: 00000000
+  - m_MuzzlesIndexes: 
+  - m_MuzzlesIndexes: 
+  - m_MuzzlesIndexes: 
+--- !u!1 &8106842217297249905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76493298146635350}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &76493298146635350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106842217297249905}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7019236627722707558}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
