@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3352272512898666349}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.51, y: 0.24, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
+  m_LocalPosition: {x: -0.2, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 246613801285692377}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
 --- !u!1 &3604884107239315542
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,10 +71,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 9075103551211145102}
   - {fileID: 574431392150189567}
   - {fileID: 5846267517453960176}
   - {fileID: 1603443727801203514}
-  - {fileID: 9075103551211145102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2030480234737499448
@@ -225,11 +225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsShooting: 1
-  m_Directions:
-  - {x: 0, y: 1}
-  - {x: -0.5, y: 1}
-  - {x: 0.5, y: 1}
-  m_NbBulletsPerShot: 3
   m_FireRate: 8
   m_BulletLifetime: 5
   m_BulletPrefab: {fileID: 5816821469450775295, guid: a1f8013b75743c348ba29e409e91e73a, type: 3}
@@ -238,6 +233,8 @@ MonoBehaviour:
   - {fileID: 574431392150189567}
   - {fileID: 5846267517453960176}
   - {fileID: 1603443727801203514}
+  m_ActiveMuzzleIndexesPerShot:
+  - m_MuzzlesIndexes: 000000000100000002000000
 --- !u!114 &5150087441182486211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +392,7 @@ Transform:
   m_GameObject: {fileID: 7902928642409581206}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0.66, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -425,13 +422,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8257140561580338986}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.47, y: 0.29, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.17364825, w: 0.9848078}
+  m_LocalPosition: {x: 0.2, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 246613801285692377}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
 --- !u!1 &9030168796673747437
 GameObject:
   m_ObjectHideFlags: 0

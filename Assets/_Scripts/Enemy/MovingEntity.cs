@@ -21,6 +21,9 @@ public class MovingEntity : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		if(m_PathParentName == null || m_PathParentName.Length <= 0)
+			return;
+
 		GameObject pathesParent = GameObject.FindGameObjectWithTag("Pathes");
 		Assert.IsNotNull(pathesParent, "No pathes container found, make sure it has the tag \"Pathes\".");
 		Transform pathParent = pathesParent.transform.Find(m_PathParentName);
@@ -42,8 +45,7 @@ public class MovingEntity : MonoBehaviour
 
 		if(m_Waypoints.Count <= 1)
 		{
-			Debug.Log("No path, destroying EnemyBehaviour of " + gameObject.name);
-			Destroy(this);
+			Debug.Log($"Path {m_PathParentName} is empty or is not valid");
 			return;
 		}
 
@@ -84,6 +86,9 @@ public class MovingEntity : MonoBehaviour
 
 	private void _Progress(Vector2 iPosOnPath, float iDist)
 	{
+		if(m_Waypoints.Count <= 1)
+			return;
+
 		Vector2 nextWaypoint = m_Waypoints[m_NextWaypointIdx];
 		Vector2 toNextWaypoint = nextWaypoint - iPosOnPath;
 		float toNextWaypointLength = toNextWaypoint.magnitude;
