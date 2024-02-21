@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4066662907001255182}
   - component: {fileID: 2326051965820310635}
   m_Layer: 7
-  m_Name: Enemy1
+  m_Name: Enemy1_1_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InitPos: {x: 0, y: 0, z: 0}
-  m_PathParentName: Loop_1
-  m_LoopPath: 1
+  m_PathParentName: 
+  m_LoopPath: 0
   m_Speed: 1
 --- !u!61 &7654230280818067705
 BoxCollider2D:

@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ace8ccb62045f6949b75fd5e84ad2323, type: 3}
     - target: {fileID: 3039907296852044175, guid: a1f8013b75743c348ba29e409e91e73a, type: 3}
       propertyPath: m_Name
-      value: Bullet2
+      value: Bullet2 1
       objectReference: {fileID: 0}
     - target: {fileID: 4900459762991859997, guid: a1f8013b75743c348ba29e409e91e73a, type: 3}
       propertyPath: m_Speed
-      value: 3
+      value: 2.244
       objectReference: {fileID: 0}
     - target: {fileID: 5816821469450775295, guid: a1f8013b75743c348ba29e409e91e73a, type: 3}
       propertyPath: m_LocalPosition.x
