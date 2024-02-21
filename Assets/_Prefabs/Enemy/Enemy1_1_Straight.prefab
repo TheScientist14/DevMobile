@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4066662907001255182}
   - component: {fileID: 2326051965820310635}
   m_Layer: 7
-  m_Name: Enemy1
+  m_Name: Enemy1_1_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InitPos: {x: 0, y: 0, z: 0}
-  m_PathParentName: Loop_1
-  m_LoopPath: 1
+  m_PathParentName: 
+  m_LoopPath: 0
   m_Speed: 1
 --- !u!61 &7654230280818067705
 BoxCollider2D:
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_IsShooting: 1
   m_FireRate: 6
   m_BulletLifetime: 5
-  m_BulletPrefab: {fileID: 2625708485076692693, guid: ad3354b0a85bfb744a8baac61ecd81f9, type: 3}
+  m_BulletPrefab: {fileID: 3140013393378654107, guid: f210750be3f096d4ca8a7df913cc6726, type: 3}
   m_BulletContainer: {fileID: 0}
   m_Muzzles:
   - {fileID: 76493298146635350}

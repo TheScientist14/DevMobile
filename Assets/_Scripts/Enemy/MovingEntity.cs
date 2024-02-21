@@ -27,7 +27,7 @@ public class MovingEntity : MonoBehaviour
 		GameObject pathesParent = GameObject.FindGameObjectWithTag("Pathes");
 		Assert.IsNotNull(pathesParent, "No pathes container found, make sure it has the tag \"Pathes\".");
 		Transform pathParent = pathesParent.transform.Find(m_PathParentName);
-		Assert.IsNotNull(pathesParent, $"No path found with name \"{m_PathParentName}\". Make sure it is placed directly under the pathes container.");
+		Assert.IsNotNull(pathParent, $"No path found with name \"{m_PathParentName}\". Make sure it is placed directly under the pathes container.");
 		foreach(Transform waypoint in pathParent)
 		{
 			Vector2 pos = waypoint.position;
