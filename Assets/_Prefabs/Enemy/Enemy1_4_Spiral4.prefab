@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2257475990892762926, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_BulletPrefab
       value: 
-      objectReference: {fileID: 6616475847712775989, guid: c71b8fa1e8b167c469d63058b6710b26, type: 3}
+      objectReference: {fileID: 3767478529966481455, guid: a4427853a61617d42bce86ad2de875ae, type: 3}
     - target: {fileID: 2257475990892762926, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_ActiveMuzzleIndexesPerShot.Array.size
       value: 3
@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_ActiveMuzzleIndexesPerShot.Array.data[2].m_MuzzlesIndexes.Array.data[3]
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 6396231129473102188, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f64b24441cfd9634ab3b23ab9e763ed9, type: 3}
     - target: {fileID: 6807955024667336995, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

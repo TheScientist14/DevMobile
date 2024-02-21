@@ -364,7 +364,7 @@ MonoBehaviour:
   m_IsShooting: 1
   m_FireRate: 6
   m_BulletLifetime: 5
-  m_BulletPrefab: {fileID: 2625708485076692693, guid: ad3354b0a85bfb744a8baac61ecd81f9, type: 3}
+  m_BulletPrefab: {fileID: 3140013393378654107, guid: f210750be3f096d4ca8a7df913cc6726, type: 3}
   m_BulletContainer: {fileID: 0}
   m_Muzzles:
   - {fileID: 76493298146635350}

@@ -125,10 +125,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 155
       objectReference: {fileID: 0}
+    - target: {fileID: 107517974465305945, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 47bf93c9aa734914eb9a1e3af6044c77, type: 2}
     - target: {fileID: 2326051965820310635, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
       propertyPath: m_FireRate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2326051965820310635, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_BulletPrefab
+      value: 
+      objectReference: {fileID: 5592997585230671830, guid: 487854dfcb8c25440b20a04f81d7c2f6, type: 3}
     - target: {fileID: 2326051965820310635, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
       propertyPath: m_Muzzles.Array.size
       value: 4
@@ -171,7 +179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6316762691176511453, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
       propertyPath: m_Name
-      value: Enemy1 Variant
+      value: Enemy1_2_Straight4
       objectReference: {fileID: 0}
     - target: {fileID: 7019236627722707558, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -213,6 +221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7480509567478624809, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 430319610, guid: 4c23d1d7d8ff20840ba5b1c7ab305189, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -354,6 +354,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2326051965820310635, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_BulletPrefab
+      value: 
+      objectReference: {fileID: 3767478529966481455, guid: 9a2707e44d75273418c4d017041e0598, type: 3}
+    - target: {fileID: 2326051965820310635, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
       propertyPath: m_Muzzles.Array.size
       value: 12
       objectReference: {fileID: 0}
@@ -541,7 +545,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7480509567478624809, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480509567478624809, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480509567478624809, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bd88cd1a8b7e97742b9f77ec82eda9f6, type: 3}
+    m_RemovedComponents:
+    - {fileID: 107517974465305945, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7019236627722707558, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}

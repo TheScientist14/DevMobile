@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8779367700902875129
+--- !u!1001 &8989045237329161174
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,16 +9,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2125536385193396451, guid: 487854dfcb8c25440b20a04f81d7c2f6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125536385193396451, guid: 487854dfcb8c25440b20a04f81d7c2f6, type: 3}
       propertyPath: m_Size.y
-      value: 0.14
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 3841987179832483743, guid: 487854dfcb8c25440b20a04f81d7c2f6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -921886159, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+      objectReference: {fileID: -2077760865, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
     - target: {fileID: 3965483732861447334, guid: 487854dfcb8c25440b20a04f81d7c2f6, type: 3}
       propertyPath: m_Name
-      value: Bullet3 1
+      value: Bullet5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444002659167537502, guid: 487854dfcb8c25440b20a04f81d7c2f6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5592997585230671830, guid: 487854dfcb8c25440b20a04f81d7c2f6, type: 3}
       propertyPath: m_LocalPosition.x
