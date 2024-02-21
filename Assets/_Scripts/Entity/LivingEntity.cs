@@ -14,7 +14,7 @@ public class LivingEntity : MonoBehaviour
 		m_MaxLife = m_Life;
 	}
 
-    public void UpdateLife(float iLifeDelta)
+	public void UpdateLife(float iLifeDelta)
 	{
 		m_Life = Mathf.Clamp(m_Life + iLifeDelta, 0, m_MaxLife);
 
@@ -22,6 +22,12 @@ public class LivingEntity : MonoBehaviour
 			OnDamaged?.Invoke();
 		if(m_Life <= 0)
 			OnDeath?.Invoke();
+	}
+
+	public void Die()
+	{
+		m_Life = 0;
+		OnDeath?.Invoke();
 	}
 
 	public float GetLife()
