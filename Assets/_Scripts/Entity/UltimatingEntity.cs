@@ -1,11 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(LivingEntity))]
 public class UltimatingEntity : EntityGauge
 {
+    [SerializeField] private float m_ActiveUltimateConsumption = 1.0f;
+    [SerializeField] private float m_ConsumptionRate = 1.0f;
+
     [SerializeField] private float m_LifeToUltimateConversion = 1.0f;
     [SerializeField] private Transform m_Ultimate;
     private LivingEntity m_LivingEntity;
+
+    private bool m_IsActive;
 
     private new void Awake()
     {
@@ -33,18 +39,30 @@ public class UltimatingEntity : EntityGauge
 
     private void Activate()
     {
-        SetUltimateState(true);
+        if (!m_IsActive)
+        {
+            m_IsActive = true;
+            StartCoroutine(HandleUltimateConsumption());
+            m_Ultimate.gameObject.SetActive(true);
+        }
     }
 
     private void Deactivate()
     {
-        SetUltimateState(false);
+        if (m_IsActive)
+        {
+            m_IsActive = false;
+            m_Ultimate.gameObject.SetActive(false);
+        }
     }
 
-    // This may become a state machine to handle better animations (Load/Active/Overheat/Inactive)
-    // For now, this is just a toggle : iState = true/false => active/inactive
-    private void SetUltimateState(bool iState)
+    private IEnumerator HandleUltimateConsumption()
     {
-        m_Ultimate.gameObject.SetActive(iState);
+        while (!IsMinimal())
+        {
+            UpdateValue(-m_ActiveUltimateConsumption);
+            yield return new WaitForSeconds(1.0f / m_ConsumptionRate);
+        }
+        Deactivate();
     }
 }

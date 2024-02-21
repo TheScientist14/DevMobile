@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 		Dynamic = 2,
 	}
 
-	private InputType m_InputType = InputType.Static;
+    [SerializeField] private InputType m_InputType = InputType.Static;
 	private Vector2 m_MovementInputValue; // magnitude <= 1
 
 	[SerializeField] private float m_InputRadius = 100;
@@ -49,8 +49,6 @@ public class PlayerController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		SetInputType(InputType.StaticDynamic);
-
 		m_GamepadPos = m_Camera.WorldToScreenPoint(m_VirtualGamepad.position);
 	}
 

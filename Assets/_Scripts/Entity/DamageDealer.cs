@@ -15,8 +15,8 @@ public class DamageDealer : MonoBehaviour
     [ShowIf("m_DamageOverTime")]
     [SerializeField] private float m_HitRate = 1.0f;
 
-    private List<LivingEntity> m_DamageableEntities;
-    private HashSet<LivingEntity> m_DamageableEntitiesHash;
+    private List<LivingEntity> m_DamageableEntities = new();
+    private HashSet<LivingEntity> m_DamageableEntitiesHash = new();
 
     private LivingEntity m_LivingEntity;
 

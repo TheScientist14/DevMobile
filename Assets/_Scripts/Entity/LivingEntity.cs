@@ -17,20 +17,19 @@ public class LivingEntity : EntityGauge
 
     public void TakeDamage(float iValue)
     {
-        if (iValue < 0) return;
-        ChangeHealth(-iValue, OnDamageTaken);
+        ChangeHealth(iValue, OnDamageTaken, false);
     }
     
     public void Heal(float iValue)
     {
-        if (iValue < 0) return;
-        ChangeHealth(iValue, OnHealGiven);
+        ChangeHealth(iValue, OnHealGiven, true);
     }
 
-    private void ChangeHealth(float iDelta, Action<float> trigger)
+    private void ChangeHealth(float iDelta, Action<float> trigger, bool iIsPositive)
     {
+        if (iDelta < 0) return;
         if (IsDead()) return;
-        UpdateValue(iDelta);
+        UpdateValue(iIsPositive ? iDelta : -iDelta);
         trigger?.Invoke(iDelta);
     }
 
