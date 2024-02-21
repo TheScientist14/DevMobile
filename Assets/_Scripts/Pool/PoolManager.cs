@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-
     [SerializeField]
-    private List<PoolBase> _poolsToInstantiate;
-
+    private List<PoolBase<Poolable>> _poolsToInstantiate;
 
     private void Start()
     {
@@ -15,7 +13,7 @@ public class PoolManager : MonoBehaviour
 
     private void InitPools()
     {
-        foreach (PoolBase pool in _poolsToInstantiate)
+        foreach (PoolBase<Poolable> pool in _poolsToInstantiate)
         {
             Instantiate(pool, transform);
         }

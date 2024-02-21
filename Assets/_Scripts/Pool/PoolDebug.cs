@@ -8,9 +8,6 @@ public class PoolDebug : MonoBehaviour
     private Touch theTouch;
     private float timeTouchEnded;
 
-
-
-// Update is called once per frame
     void Update()
     {
         // To debug in classic editor

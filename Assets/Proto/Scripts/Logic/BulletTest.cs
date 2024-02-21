@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace Proto
 {
-    public class BulletTest : MonoBehaviour
+    public class BulletTest : Poolable
     {
+        private static Queue<BulletTest> _pool = new Queue<BulletTest>();
+
         [SerializeField]
         private float _Speeeeeeeeed = 125.0f;
         [SerializeField]
@@ -13,8 +15,25 @@ namespace Proto
         [SerializeField]
         private bool _IsDebugging;
 
+        [SerializeField]
+        private static BulletTest _prefab;
 
         Rigidbody2D _rigidbody2D;
+
+        public static BulletTest Create()
+        {
+            if(_pool.Count == 0)
+            {
+                BulletTest go = Instantiate(_prefab);
+                return go;
+            }
+            return _pool.Dequeue();
+        }
+
+        public void Recycle()
+        {
+            _pool.Enqueue(this);
+        }
 
         private void Awake()
         {
