@@ -275,6 +275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DamageDealtOnCollision: 3
   m_SelfDestructOnCollision: 1
+  m_DamageOverTime: 0
+  m_DamagePerHit: 0
+  m_HitRate: 1
 --- !u!95 &107517974465305945
 Animator:
   serializedVersion: 5
@@ -321,7 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4e0e755ae69b54c8629bda8cf01093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Life: 4
+  m_Max: 4
+  m_Min: 0
+  m_Start: 4
 --- !u!50 &4066662907001255182
 Rigidbody2D:
   serializedVersion: 4

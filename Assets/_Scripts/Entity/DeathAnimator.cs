@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LivingEntity))]
@@ -7,14 +5,24 @@ public class DeathAnimator : MonoBehaviour
 {
 	[SerializeField] private Animator m_VFXAnimator;
 
-	// Start is called before the first frame update
-	void Start()
-	{
-		LivingEntity entity = GetComponent<LivingEntity>();
-		entity.OnDeath += TriggerDeathAnimation;
-	}
+	private LivingEntity m_LivingEntity;
 
-	private void TriggerDeathAnimation()
+    private void Awake()
+    {
+		m_LivingEntity = GetComponent<LivingEntity>();
+    }
+
+    private void OnEnable()
+    {
+        m_LivingEntity.RegisterOnDeathEvent(TriggerDeathAnimation);
+    }
+
+    private void OnDisable()
+    {
+        m_LivingEntity.UnregisterOnDeathEvent(TriggerDeathAnimation);
+    }
+
+    private void TriggerDeathAnimation()
 	{
 		PlayerMovement playerMovement;
 		if(TryGetComponent(out playerMovement))

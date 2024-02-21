@@ -1,48 +1,47 @@
 using System;
-using UnityEngine;
 
-public class LivingEntity : MonoBehaviour
+public class LivingEntity : EntityGauge
 {
-	[SerializeField] private float m_Life = 10;
-	private float m_MaxLife;
+    public event Action<float> OnDamageTaken;
+    public event Action<float> OnHealGiven;
 
-	public event Action OnDeath;
-	public event Action OnDamaged;
+    public void RegisterOnDeathEvent(Action callback)
+    {
+        OnMinReached += callback;
+    }
 
-	private void Start()
-	{
-		m_MaxLife = m_Life;
+    public void UnregisterOnDeathEvent(Action callback)
+    {
+        OnMinReached -= callback;
+    }
+
+    public void TakeDamage(float iValue)
+    {
+        if (iValue < 0) return;
+        ChangeHealth(-iValue, OnDamageTaken);
+    }
+    
+    public void Heal(float iValue)
+    {
+        if (iValue < 0) return;
+        ChangeHealth(iValue, OnHealGiven);
+    }
+
+    private void ChangeHealth(float iDelta, Action<float> trigger)
+    {
+        if (IsDead()) return;
+        UpdateValue(iDelta);
+        trigger?.Invoke(iDelta);
+    }
+
+    public void Die()
+    {
+        if (IsDead()) return;
+        SetValue(m_Min);
 	}
 
-	public void UpdateLife(float iLifeDelta)
-	{
-		if(m_Life <= 0 && iLifeDelta <= 0)
-			return;
-
-		m_Life = Mathf.Clamp(m_Life + iLifeDelta, 0, m_MaxLife);
-
-		if(iLifeDelta < 0)
-			OnDamaged?.Invoke();
-		if(m_Life <= 0)
-			OnDeath?.Invoke();
-	}
-
-	public void Die()
-	{
-		if(m_Life <= 0)
-			return;
-
-		m_Life = 0;
-		OnDeath?.Invoke();
-	}
-
-	public float GetLife()
-	{
-		return m_Life;
-	}
-
-	public float GetMaxLife()
-	{
-		return m_MaxLife;
-	}
+    public bool IsDead()
+    {
+        return IsMinimal();
+    }
 }
