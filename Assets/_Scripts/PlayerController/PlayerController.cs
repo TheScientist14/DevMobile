@@ -136,8 +136,8 @@ public class PlayerController : MonoBehaviour
 		return Vector2.zero;
 	}
 
-    public Vector2 GetMovementInputValue()
-    {
-        return m_MovementInputValue;
-    }
+	public Vector2 GetMovementInputValue()
+	{
+		return m_MovementInputValue;
+	}
 }

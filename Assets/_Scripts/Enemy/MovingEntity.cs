@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 // Will first go to Init Pos, then follow its path.
-public class EnemyBehaviour : MonoBehaviour
+public class MovingEntity : MonoBehaviour
 {
 	[SerializeField] private Vector3 m_InitPos;
 	private bool hasStarted = false;
 
-	[SerializeField] private Transform m_PathParent;
+	[SerializeField] private string m_PathParentName;
 	[SerializeField] private bool m_LoopPath = false;
 	private List<Vector2> m_Waypoints = new List<Vector2>();
 	private Vector2 m_CurPosOnPath;
@@ -20,14 +21,18 @@ public class EnemyBehaviour : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		foreach(Transform waypoint in m_PathParent)
+		GameObject pathesParent = GameObject.FindGameObjectWithTag("Pathes");
+		Assert.IsNotNull(pathesParent, "No pathes container found, make sure it has the tag \"Pathes\".");
+		Transform pathParent = pathesParent.transform.Find(m_PathParentName);
+		Assert.IsNotNull(pathesParent, $"No path found with name \"{m_PathParentName}\". Make sure it is placed directly under the pathes container.");
+		foreach(Transform waypoint in pathParent)
 		{
 			Vector2 pos = waypoint.position;
 			if(m_Waypoints.Count > 0)
 			{
 				if((pos - m_Waypoints[m_Waypoints.Count - 1]).magnitude <= Mathf.Epsilon)
 				{
-					Debug.LogWarning($"Path {m_PathParent.gameObject.name}: waypoint {waypoint.gameObject.name} is too close from the previous one.");
+					Debug.LogWarning($"Path {m_PathParentName}: waypoint {waypoint.gameObject.name} is too close from the previous one.");
 					continue;
 				}
 			}
