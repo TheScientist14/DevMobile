@@ -22,6 +22,8 @@ public class GameStateMachine : IGameStateMachine
 
 	public void SetState(IGameState iState)
 	{
+		if (iState.GetType() == m_CurrentState.GetType()) return;
+
 		IGameState previous = m_CurrentState;
 		previous.Exit();
 

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -65,4 +66,10 @@ public class GameManager : MonoBehaviour
 	{
 		return m_GameStateMachine;
 	}
+
+	[Button]
+	public void SetPlayGameState()
+	{
+        m_GameStateMachine.SetState(new PlayGameState());
+    }
 }
