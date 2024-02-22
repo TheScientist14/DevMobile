@@ -4,24 +4,34 @@ using UnityEngine;
 
 public class CameraAdjuster : MonoBehaviour
 {
-    [SerializeField]
-    private float maxCameraDistance = 10f;
+    public bool maintainWidth = true;
+
+    [Range(-1f, 1f)]
+    public int adaptPosition;
 
     // Résolution actuelle de l'écran
     private Vector2Int currentResolution;
 
-    Camera _mainCamera;
+    float defaultWidth;
+    float defaultHeight;
+
+    Vector3 CameraPos;
 
     private void Start()
     {
+        CameraPos = Camera.main.transform.position;
+        defaultHeight = Camera.main.orthographicSize;
+        defaultWidth = Camera.main.orthographicSize * Camera.main.aspect;
+
         // Obtenir la résolution initiale de l'écran
         currentResolution = new Vector2Int(Screen.width, Screen.height);
-        _mainCamera = Camera.main;
+
         AdjustCamera();
     }
 
     private void Update()
     {
+        // Si la résolution change alors on ajuste la caméra
         if (Screen.width != currentResolution.x || Screen.height != currentResolution.y)
         {
             currentResolution.x = Screen.width;
@@ -33,22 +43,15 @@ public class CameraAdjuster : MonoBehaviour
 
     void AdjustCamera()
     {
-        float targetAspect = (float)Screen.width / (float)Screen.height;
-        _mainCamera.aspect = targetAspect;
-
-        float screenRatio = (float)Screen.width / (float)Screen.height;
-        float scaleFactor = targetAspect / screenRatio;
-
-        float newOrthographicSize = _mainCamera.orthographicSize * scaleFactor;
-        _mainCamera.orthographicSize = newOrthographicSize;
-
-        // Calculer la position max de la caméra en fonction de la distance maximale
-        Vector3 maxCameraPosition = _mainCamera.transform.position + Vector3.back * maxCameraDistance;
-
-        // Vérifie si la caméra dépasse la position maximale
-        if (_mainCamera.transform.position.z < maxCameraPosition.z)
+        if (maintainWidth)
         {
-            _mainCamera.transform.position = maxCameraPosition;
+            Camera.main.orthographicSize = defaultWidth / Camera.main.aspect;
+
+            Camera.main.transform.position = new Vector3(CameraPos.x, adaptPosition * (defaultHeight - Camera.main.orthographicSize), CameraPos.z);
+        }
+        else
+        {
+            Camera.main.transform.position = new Vector3(adaptPosition * (defaultWidth - Camera.main.orthographicSize * Camera.main.aspect), CameraPos.y, CameraPos.z);
         }
     }
 }
