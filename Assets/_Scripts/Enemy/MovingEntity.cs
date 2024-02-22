@@ -21,8 +21,15 @@ public class MovingEntity : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		if(InitWaypoints())
+			m_CurPosOnPath = m_Waypoints[0];
+	}
+
+	private bool InitWaypoints()
+	{
+		m_Waypoints.Clear();
 		if(m_PathParentName == null || m_PathParentName.Length <= 0)
-			return;
+			return false;
 
 		GameObject pathesParent = GameObject.FindGameObjectWithTag("Pathes");
 		Assert.IsNotNull(pathesParent, "No pathes container found, make sure it has the tag \"Pathes\".");
@@ -46,10 +53,10 @@ public class MovingEntity : MonoBehaviour
 		if(m_Waypoints.Count <= 1)
 		{
 			Debug.Log($"Path {m_PathParentName} is empty or is not valid");
-			return;
+			return false;
 		}
 
-		m_CurPosOnPath = m_Waypoints[0];
+		return true;
 	}
 
 	// Update is called once per frame
@@ -121,5 +128,16 @@ public class MovingEntity : MonoBehaviour
 	public void SetStartPos(Vector2 iPos)
 	{
 		m_InitPos = iPos;
+	}
+
+	public void SetPathName(string iPathName)
+	{
+		m_PathParentName = iPathName;
+		InitWaypoints();
+	}
+
+	public void SetDoLoop(bool iLoop)
+	{
+		m_LoopPath = iLoop;
 	}
 }
