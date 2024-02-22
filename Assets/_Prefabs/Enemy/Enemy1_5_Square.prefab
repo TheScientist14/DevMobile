@@ -33,6 +33,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2625708485076692693, guid: ad3354b0a85bfb744a8baac61ecd81f9, type: 3}
     - target: {fileID: 2257475990892762926, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
+      propertyPath: m_ProjectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f4a4be7ecb064946a8d0d25a79c6670, type: 2}
+    - target: {fileID: 2257475990892762926, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_Muzzles.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -303,6 +307,7 @@ MonoBehaviour:
   m_FireRate: 1
   m_BulletLifetime: 5
   m_BulletPrefab: {fileID: 2625708485076692693, guid: 0a7e57719d2d45849b00c82aab7f8512, type: 3}
+  m_ProjectileData: {fileID: 11400000, guid: 642894c52f85fb54c848f577f9ecb6b0, type: 2}
   m_BulletContainer: {fileID: 0}
   m_Muzzles:
   - {fileID: 6576824210733094443}

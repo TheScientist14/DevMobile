@@ -358,6 +358,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3767478529966481455, guid: 9a2707e44d75273418c4d017041e0598, type: 3}
     - target: {fileID: 2326051965820310635, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_ProjectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: f779e9ce778857a448da03e0206bda05, type: 2}
+    - target: {fileID: 2326051965820310635, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
       propertyPath: m_Muzzles.Array.size
       value: 12
       objectReference: {fileID: 0}

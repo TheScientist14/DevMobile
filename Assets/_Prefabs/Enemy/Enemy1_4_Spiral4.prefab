@@ -17,6 +17,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3767478529966481455, guid: a4427853a61617d42bce86ad2de875ae, type: 3}
     - target: {fileID: 2257475990892762926, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
+      propertyPath: m_ProjectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: ed839639fa74e5648a47898c51a957c6, type: 2}
+    - target: {fileID: 2257475990892762926, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_ActiveMuzzleIndexesPerShot.Array.size
       value: 3
       objectReference: {fileID: 0}

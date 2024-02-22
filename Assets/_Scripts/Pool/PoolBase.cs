@@ -20,6 +20,11 @@ public class PoolBase<T> : MonoBehaviour
         PopulatePool();
     }
 
+    public void SetObjectToPool(T newObjectToPool)
+    {
+        _objectToPool = newObjectToPool;
+    }
+
     public T GetPooledObject()
     {
         if (_pooledObjects.Count > 0)
