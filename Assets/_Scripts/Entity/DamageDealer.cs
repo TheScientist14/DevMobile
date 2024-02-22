@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
 public class DamageDealer : MonoBehaviour
 {
 	[SerializeField] private float m_DamageDealtOnCollision = 1;
 	[SerializeField] private bool m_SelfDestructOnCollision = true;
-
+    [SerializeField, HideIf("m_SelfDestructOnCollision")] private UnityEvent m_OnCollisionAndNoDestruction;
 	[SerializeField] private bool m_DamageOverTime;
     [ShowIf("m_DamageOverTime")]
 	[SerializeField] private float m_DamagePerHit;
@@ -68,6 +69,10 @@ public class DamageDealer : MonoBehaviour
         {
             m_DamageableEntities.Add(damageable);
             m_DamageableEntitiesHash.Add(damageable);
+        }
+        if (m_SelfDestructOnCollision == false)
+        {
+            m_OnCollisionAndNoDestruction.Invoke();
         }
     }
 

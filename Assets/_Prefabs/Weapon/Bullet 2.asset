@@ -16,7 +16,7 @@ MonoBehaviour:
   _colliderSize: {x: 0.17, y: 0.1}
   _sprite: {fileID: 21300000, guid: ace8ccb62045f6949b75fd5e84ad2323, type: 3}
   _damage: 1
-  _selfDestructOnCollision: 1
+  _selfDestructOnCollision: 0
   _damageOverTime: 0
   _damagePerHit: 0
   _hitRate: 1

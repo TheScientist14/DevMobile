@@ -10,4 +10,14 @@ public class PoolableProjectile : Poolable
     {
         m_projectilePool = ProjectilePool.SharedInstance;
     }
+
+    public void Recycle()
+    {
+        m_projectilePool.UnloadObject(this);
+    }
+
+    public void RecycleIn(float seconds)
+    {
+
+    }
 }
