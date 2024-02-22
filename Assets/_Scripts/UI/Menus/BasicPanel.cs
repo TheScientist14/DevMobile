@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicPanel<T> : MonoBehaviour where T : IGameState
+public class BasicPanel<T> : MonoBehaviour where T : class, IGameState
 {
 	protected GameStateMachine m_StateMachine;
 
@@ -11,6 +11,8 @@ public class BasicPanel<T> : MonoBehaviour where T : IGameState
 	{
 		m_StateMachine = GameManager.Get().GetStateMachine();
 		m_StateMachine.OnStateChange += _OnStateChanged;
+
+		gameObject.SetActive(m_StateMachine.TryGetState(out T _));
 	}
 
 	protected virtual void _OnStateChanged(IGameState iPrevState, IGameState iCurState)

@@ -26,7 +26,7 @@ public class BackgroundScroller : PoolBase<PoolableBackgroundObject>
 
 	private IEnumerator SpawnObjects()
 	{
-		var delay = new WaitForSecondsRealtime(m_TickDurationInSeconds);
+		var delay = new WaitForSeconds(m_TickDurationInSeconds);
 		while(true)
 		{
 			if(Random.Range(0f, 1f) < m_SpawnProbabilityPerTick)

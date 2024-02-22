@@ -5,32 +5,29 @@ using UnityEngine;
 
 public class ShootingEntity : MonoBehaviour
 {
-    [Serializable]
-    public struct ActiveMuzzlesIndexList
-    {
-        public List<int> m_MuzzlesIndexes;
-    }
+	[Serializable]
+	public struct ActiveMuzzlesIndexList
+	{
+		public List<int> m_MuzzlesIndexes;
+	}
 
-    // Serialized for debug
-    [SerializeField] private bool m_IsShooting = true;
+	// Serialized for debug
+	[SerializeField] private bool m_IsShooting = true;
 
-    // [TEMP] some of this data should be overrided by some enemy controller
-    [SerializeField] private float m_FireRate;
-    [SerializeField] private float m_BulletLifetime; // this could be computed and optimized
+	// [TEMP] some of this data should be overrided by some enemy controller
+	[SerializeField] private float m_FireRate;
+	[SerializeField] private float m_BulletLifetime; // this could be computed and optimized
 
-    // [TEMP] this data should just be taken from the entity config: 
     [SerializeField] private Transform m_BulletPrefab;
     [SerializeField] private ProjectileData m_ProjectileData;
     private ProjectilePool m_ProjectilePool;
 
-    [SerializeField] private Transform m_BulletContainer;
+	[SerializeField] private Transform m_BulletContainer;
 
-    [SerializeField] private List<Transform> m_Muzzles;
-    [SerializeField] private List<ActiveMuzzlesIndexList> m_ActiveMuzzleIndexesPerShot;
+	[SerializeField] private List<Transform> m_Muzzles;
+	[SerializeField] private List<ActiveMuzzlesIndexList> m_ActiveMuzzleIndexesPerShot;
 
-    private int m_ShootIndexInShootingPattern = 0;
-
-
+	private int m_ShootIndexInShootingPattern = 0;
 
     private void Start()
     {
@@ -39,28 +36,28 @@ public class ShootingEntity : MonoBehaviour
             StartCoroutine(HandleShootingPattern());
     }
 
-    private IEnumerator HandleShootingPattern()
-    {
-        while (m_IsShooting && m_FireRate > 0)
-        {
-            Shoot();
+	private IEnumerator HandleShootingPattern()
+	{
+		while(m_IsShooting && m_FireRate > 0)
+		{
+			Shoot();
 
-            ++m_ShootIndexInShootingPattern;
-            if (m_ShootIndexInShootingPattern >= m_ActiveMuzzleIndexesPerShot.Count)
-                m_ShootIndexInShootingPattern = 0;
+			++m_ShootIndexInShootingPattern;
+			if(m_ShootIndexInShootingPattern >= m_ActiveMuzzleIndexesPerShot.Count)
+				m_ShootIndexInShootingPattern = 0;
 
-            yield return new WaitForSeconds(1.0f / m_FireRate);
-        }
-    }
+			yield return new WaitForSeconds(1.0f / m_FireRate);
+		}
+	}
 
-    private void Shoot()
-    {
-        List<int> currentActiveMuzzles = m_ActiveMuzzleIndexesPerShot[m_ShootIndexInShootingPattern].m_MuzzlesIndexes;
-        int nbBulletsToShoot = currentActiveMuzzles.Count;
+	private void Shoot()
+	{
+		List<int> currentActiveMuzzles = m_ActiveMuzzleIndexesPerShot[m_ShootIndexInShootingPattern].m_MuzzlesIndexes;
+		int nbBulletsToShoot = currentActiveMuzzles.Count;
 
-        for (int i = 0; i < nbBulletsToShoot; ++i)
-        {
-            Transform currentMuzzle = m_Muzzles[currentActiveMuzzles[i]];
+		for(int i = 0; i < nbBulletsToShoot; ++i)
+		{
+			Transform currentMuzzle = m_Muzzles[currentActiveMuzzles[i]];
 
             PoolableProjectile newBullet = m_ProjectilePool.GetPooledObject();
             newBullet.transform.position = currentMuzzle.position;
@@ -82,19 +79,24 @@ public class ShootingEntity : MonoBehaviour
         }
     }
 
-    private bool CheckIndexesInMuzzles()
-    {
-        foreach (ActiveMuzzlesIndexList el in m_ActiveMuzzleIndexesPerShot)
-        {
-            foreach (int index in el.m_MuzzlesIndexes)
-            {
-                if (index < 0 || index >= m_Muzzles.Count)
-                {
-                    Debug.LogWarning("Muzzle index out of Muzzle list range !");
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+	private bool CheckIndexesInMuzzles()
+	{
+		foreach(ActiveMuzzlesIndexList el in m_ActiveMuzzleIndexesPerShot)
+		{
+			foreach(int index in el.m_MuzzlesIndexes)
+			{
+				if(index < 0 || index >= m_Muzzles.Count)
+				{
+					Debug.LogWarning("Muzzle index out of Muzzle list range !");
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	public void Shoot(bool iShoot)
+	{
+		m_IsShooting = iShoot;
+	}
 }

@@ -36,9 +36,9 @@ public class GameStateMachine : IGameStateMachine
 		m_CurrentState.Update(iDeltaTime);
 	}
 
-	public bool TryGetState<T>(out T currentState) where T : IGameState
+	public bool TryGetState<T>(out T currentState) where T : class, IGameState
 	{
-		currentState = (T)m_CurrentState;
+		currentState = m_CurrentState as T;
 		return currentState != null;
 	}
 
