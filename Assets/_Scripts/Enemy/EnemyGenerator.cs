@@ -10,14 +10,16 @@ public class EnemyGenerator : MonoBehaviour
 
     [SerializeField] private float m_OpeningDuration;
     [SerializeField] private float m_PeriodDuration;
-    [SerializeField] private float m_UpdateRate;
+    [SerializeField] private float m_RefreshTime;
     [SerializeField] private float m_MaxDifficulty;
     [SerializeField] private float m_DifficultyGainPerSurvivedPeriod;
+
+    [Header("Debug")]
+    [SerializeField] private bool m_DoLogGeneratorHeartBeatReports;
 
     private int m_SurvivedPeriodsCount;
     private bool m_IsOpeningDone;
     private float m_Time;
-    private float m_DeltaTime;
 
     private GameStateMachine m_GameStateMachine;
 
@@ -34,14 +36,13 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Awake()
     {
-        m_DeltaTime = 1.0f / m_UpdateRate;
         int enemyTypesCount = m_EnemyGeneratorData.Count();
         m_SortedDifficulties = new() { Capacity = enemyTypesCount };
         m_EnemiesIndexesSortedByDifficulty = new() { Capacity = enemyTypesCount };
         for (int i = 0; i < enemyTypesCount; ++i)
         {
-            m_EnemiesIndexesSortedByDifficulty[i] = i;
-            m_SortedDifficulties[i] = m_EnemyGeneratorData.Get(i).m_Difficulty;
+            m_EnemiesIndexesSortedByDifficulty.Add(i);
+            m_SortedDifficulties.Add(m_EnemyGeneratorData.Get(i).m_Difficulty);
         }
         ListUtility.Sort(ref m_EnemiesIndexesSortedByDifficulty, ref m_SortedDifficulties);
 
@@ -49,12 +50,6 @@ public class EnemyGenerator : MonoBehaviour
         m_MaxEnemyDifficulty = m_SortedDifficulties[^1];
 
         m_SpawnQueue = new();
-    }
-
-    private void Reset()
-    {
-        m_Time = 0f;
-        m_SurvivedPeriodsCount = 0;
     }
 
     private void OnEnable()
@@ -86,11 +81,35 @@ public class EnemyGenerator : MonoBehaviour
     {
         while (true)
         {
+            string debugLog = string.Empty;
+            if (m_DoLogGeneratorHeartBeatReports)
+            {
+                debugLog += $"GeneratorHeartBeat Report :\n";
+                debugLog += $"Time : {m_Time}\n";
+                debugLog += $"Is in Opening Phase : {!m_IsOpeningDone}\n";
+                debugLog += $"Is in Periodic Phase : {m_IsOpeningDone}\n";
+                debugLog += $"---\n";
+                debugLog += $"Current Difficulty : {m_CurrentDifficulty}\n";
+            }
+
+            m_SpawnQueue.Clear();
             float targetDifficulty = ComputeTargetDifficulty();
             if (targetDifficulty > m_CurrentDifficulty)
                 AdjustDifficulty(targetDifficulty - m_CurrentDifficulty);
 
-            m_Time += m_DeltaTime;
+            if (m_DoLogGeneratorHeartBeatReports)
+            {
+                debugLog += $"Target Difficulty : {targetDifficulty}\n";
+                debugLog += $"Adjusted Difficulty : {m_CurrentDifficulty}\n";
+                debugLog += $"Enemies to spawn : \n";
+                foreach (GameObject go in m_SpawnQueue)
+                {
+                    debugLog += go.name + "\n";
+                }
+                Debug.Log(debugLog);
+            }
+
+            m_Time += m_RefreshTime;
             if (m_IsOpeningDone)
             {
                 CheckForOverTime(m_PeriodDuration, out bool newPeriodStarted);
@@ -101,7 +120,7 @@ public class EnemyGenerator : MonoBehaviour
                 CheckForOverTime(m_OpeningDuration, out m_IsOpeningDone);
             }
 
-            yield return new WaitForSeconds(m_DeltaTime);
+            yield return new WaitForSeconds(m_RefreshTime);
         }
     }
 
