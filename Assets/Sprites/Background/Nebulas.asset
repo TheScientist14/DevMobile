@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6be3da6dd0a1aa4f936b40ea4b90428, type: 3}
+  m_Name: Nebulas
+  m_EditorClassIdentifier: 
+  Sprites:
+  - {fileID: 21300000, guid: 0e29530d49aee6542b24534545932a41, type: 3}
+  - {fileID: 21300000, guid: 97f8e95b734462247bf06d4d58634b24, type: 3}
