@@ -907,7 +907,7 @@ MonoBehaviour:
   m_CaptionText: {fileID: 1100472097584638316}
   m_CaptionImage: {fileID: 0}
   m_Placeholder: {fileID: 0}
-  m_ItemText: {fileID: 0}
+  m_ItemText: {fileID: 8185200080650293704}
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
@@ -1213,3 +1213,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 855011147537277204, guid: b971ad1e6fae26f4a8748f2983954b53, type: 3}
   m_PrefabInstance: {fileID: 7493348037815430045}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8185200080650293704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1615125741386807893, guid: b971ad1e6fae26f4a8748f2983954b53, type: 3}
+  m_PrefabInstance: {fileID: 7493348037815430045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

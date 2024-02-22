@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SettingsMenuBehaviour : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class SettingsMenuBehaviour : MonoBehaviour
 	public void ShowSettings(GameObject iFrom)
 	{
 		m_PreviousMenu = iFrom;
+		m_PreviousMenu?.SetActive(false);
 		gameObject.SetActive(true);
 	}
 
