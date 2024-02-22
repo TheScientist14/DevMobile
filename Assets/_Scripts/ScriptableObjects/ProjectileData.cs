@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Projectile/New Projectile Data")]
-public class BulletData : ScriptableObject
+public class ProjectileData : ScriptableObject
 {
 
     [SerializeField]

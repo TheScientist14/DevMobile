@@ -187,3 +187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DamageDealtOnCollision: 1
   m_SelfDestructOnCollision: 1
+  m_DamageOverTime: 0
+  m_DamagePerHit: 0
+  m_HitRate: 1

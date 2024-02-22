@@ -13,6 +13,11 @@ public class ProjectileMovement : MonoBehaviour
         m_Direction = iInputDir.normalized;
     }
 
+    public void SetMovingSpeed(float speed)
+    {
+        m_Speed = speed;
+    }
+
     private void FixedUpdate()
     {
         Move();

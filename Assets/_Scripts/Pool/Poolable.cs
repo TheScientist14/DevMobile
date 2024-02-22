@@ -25,4 +25,6 @@ public abstract class Poolable : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    // public abstract void Recycle();
 }

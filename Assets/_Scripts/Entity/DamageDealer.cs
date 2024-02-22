@@ -20,6 +20,15 @@ public class DamageDealer : MonoBehaviour
 
     private LivingEntity m_LivingEntity;
 
+    public void ChangeDamageParams(float CollisionDamage, bool CollisionSelfDestruct, bool HasContinuousDamage, float ContinuousHitDamage, float ContinuousHitRate)
+    {
+        m_DamageDealtOnCollision = CollisionDamage;
+        m_SelfDestructOnCollision = CollisionSelfDestruct;
+        m_DamageOverTime = HasContinuousDamage;
+        m_DamagePerHit = ContinuousHitDamage;
+        m_HitRate = ContinuousHitRate;
+    }
+
 	private void Start()
 	{
 		TryGetComponent(out m_LivingEntity);
