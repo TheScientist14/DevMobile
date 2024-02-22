@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 	private Vector2 m_MovementInputValue; // magnitude <= 1
 
 	[SerializeField] private float m_InputRadius = 100;
+	private bool m_HasNeverPressed = true;
 	private bool m_IsPressed = false;
 
 	// static
@@ -54,6 +55,9 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
+		if(m_HasNeverPressed)
+			return;
+
 		// update input value
 		if(m_InputType == InputType.Dynamic)
 			_SetDelta(m_Camera.WorldToScreenPoint(transform.position), m_CurMousePos, m_InputRadius * 0.5f);
@@ -106,6 +110,7 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTouchscreenTouch(InputAction.CallbackContext _)
 	{
+		m_HasNeverPressed = false;
 		m_IsPressed = m_TouchInput.ReadValue<float>() > 0.5f; // actuation point
 
 		if(!m_IsPressed)

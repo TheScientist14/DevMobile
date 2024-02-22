@@ -19,6 +19,7 @@ public class EndGameOnDeath : MonoBehaviour
 	private IEnumerator DelaySetEndState()
 	{
 		yield return new WaitForSeconds(1);
+		gameObject.SetActive(false);
 		m_StateMachine.SetState(new EndGameState());
 	}
 
