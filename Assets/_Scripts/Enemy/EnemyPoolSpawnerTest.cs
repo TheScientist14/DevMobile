@@ -1,5 +1,7 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
 public class EnemyPoolSpawnerTest : MonoBehaviour
@@ -8,14 +10,16 @@ public class EnemyPoolSpawnerTest : MonoBehaviour
 
     [SerializeField]
     List<PoolingEnemy> _enemiesToPool;
-    
+
     [SerializeField]
     Transform _spawnPosition;
 
     [SerializeField]
     float _spawnDelay = 0.5f;
-    [SerializeField]
-    float _deactivationTimeAfterSpawn = 10.0f;
+
+    [SerializeField] private bool _willHaveLifeSpan;
+    [SerializeField, ShowIf("_willHaveLifeSpan")]
+    float _lifeSpan = 10.0f;
 
     void Start()
     {
@@ -33,7 +37,8 @@ public class EnemyPoolSpawnerTest : MonoBehaviour
             if (newEnemy != null)
             {
                 newEnemy.transform.position = _spawnPosition.transform.position;
-                StartCoroutine(DeactivateEnemy(newEnemy));
+                if (_willHaveLifeSpan)
+                    StartCoroutine(DeactivateEnemy(newEnemy));
             }
             else
             {
@@ -44,7 +49,7 @@ public class EnemyPoolSpawnerTest : MonoBehaviour
 
     private IEnumerator DeactivateEnemy(PoolingEnemy enemy)
     {
-        yield return new WaitForSeconds(_deactivationTimeAfterSpawn);
+        yield return new WaitForSeconds(_lifeSpan);
         _enemiesPool.UnloadEnemy(enemy);
     }
 }
