@@ -2,6 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuBehaviour : BasicPanel<MenuGameState>
+public class HUDBehaviour : BasicPanel<PlayGameState>
 {
 }
