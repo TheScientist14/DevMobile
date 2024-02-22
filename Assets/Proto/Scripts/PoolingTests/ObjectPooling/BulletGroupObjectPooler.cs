@@ -19,9 +19,4 @@ public class BulletGroupObjectPooler : PoolBase<GroupBulletTest>
             SharedInstance = this;
         }
     }
-
-    private void Start()
-    {
-        PopulatePool();
-    }
 }

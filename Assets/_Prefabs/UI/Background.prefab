@@ -500,6 +500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84acc58fad3760e42b62f48e50354fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectToPool: {fileID: 6415223430251568464, guid: 147ac928fa71a0042a8fc5c8f0d369ed, type: 3}
+  _amountToPool: 0
+  _increasable: 1
   m_Objects: {fileID: 11400000, guid: c88b3c1ca148c44468e678221ded01cf, type: 2}
   m_ScrollSpeed: 5
   m_RenderLayer: -1
@@ -551,6 +554,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84acc58fad3760e42b62f48e50354fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectToPool: {fileID: 6415223430251568464, guid: 147ac928fa71a0042a8fc5c8f0d369ed, type: 3}
+  _amountToPool: 0
+  _increasable: 1
   m_Objects: {fileID: 11400000, guid: 2c21365bec33b9d4a9bd7f5ee4e3d245, type: 2}
   m_ScrollSpeed: 0.5
   m_RenderLayer: -2
@@ -601,6 +607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84acc58fad3760e42b62f48e50354fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectToPool: {fileID: 6415223430251568464, guid: 147ac928fa71a0042a8fc5c8f0d369ed, type: 3}
+  _amountToPool: 0
+  _increasable: 1
   m_Objects: {fileID: 11400000, guid: c88b3c1ca148c44468e678221ded01cf, type: 2}
   m_ScrollSpeed: 0.2
   m_RenderLayer: -3

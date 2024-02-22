@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundScroller : MonoBehaviour
+public class BackgroundScroller : PoolBase<PoolableBackgroundObject>
 {
 	[SerializeField] private BackgroundObjects m_Objects;
 	[SerializeField] private float m_ScrollSpeed = 1;
@@ -14,8 +14,9 @@ public class BackgroundScroller : MonoBehaviour
 	private Vector2 m_TopRight;
 
 	// Start is called before the first frame update
-	void Start()
+	protected override void Start()
 	{
+		base.Start();
 		Camera camera = Camera.main;
 		m_BottomLeft = camera.ViewportToWorldPoint(new Vector2(0, -1));
 		m_TopRight = camera.ViewportToWorldPoint(Vector2.one);
@@ -36,14 +37,12 @@ public class BackgroundScroller : MonoBehaviour
 
 	private void SpawnObject()
 	{
-		GameObject gameObject = new GameObject();
+		PoolableBackgroundObject gameObject = GetPooledObject();
 		gameObject.transform.parent = transform;
 		gameObject.transform.localScale = Vector3.one;
-
-		SpriteRenderer spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 		Sprite sprite = m_Objects.Sprites[Random.Range(0, m_Objects.Sprites.Count)];
-		spriteRenderer.sprite = sprite;
-		spriteRenderer.sortingOrder = m_RenderLayer;
+        gameObject.SpriteRenderer.sprite = sprite;
+        gameObject.SpriteRenderer.sortingOrder = m_RenderLayer;
 
 		gameObject.transform.position = new Vector2(Random.Range(m_BottomLeft.x, m_TopRight.x), m_TopRight.y + sprite.bounds.extents.y);
 	}
@@ -56,7 +55,18 @@ public class BackgroundScroller : MonoBehaviour
 		{
 			child.transform.position += Vector3.down * dist;
 			if(child.transform.position.y < m_BottomLeft.y)
-				Destroy(child.gameObject);
+			{
+				PoolableBackgroundObject backgroundObject;
+				if (child.TryGetComponent(out backgroundObject))
+				{
+					UnloadObject(backgroundObject);
+				}
+				else
+				{
+					// Debug.LogWarning("Found a non background object in child!");
+					Destroy(child.gameObject);
+				}
+			}
 		}
 	}
 }

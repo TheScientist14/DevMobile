@@ -23,9 +23,9 @@ namespace Proto {
             }
         }
 
-        private void Start()
+        protected override void Start()
         {
-            PopulatePool();
+            base.Start();
 
             int asteroidsToActivate = Math.Min(m_numberOfAsteroidOnStart, _amountToPool);
             
