@@ -1,7 +1,11 @@
 using System;
+using NaughtyAttributes;
+using UnityEngine;
 
-public class LivingEntity : EntityGauge
+public class LivingEntity : EntityGauge, IRestartable
 {
+    [SerializeField] private VoidEvent m_DeathBroadcast;
+
     public event Action<float> OnDamageTaken;
     public event Action<float> OnHealGiven;
 
@@ -33,6 +37,7 @@ public class LivingEntity : EntityGauge
         trigger?.Invoke(iDelta);
     }
 
+    [Button]
     public void Die()
     {
         if (IsDead()) return;
@@ -42,5 +47,25 @@ public class LivingEntity : EntityGauge
     public bool IsDead()
     {
         return IsMinimal();
+    }
+
+    private void OnEnable()
+    {
+        RegisterOnDeathEvent(NotifyDeathEvent);
+    }
+
+    private void OnDisable()
+    {
+        UnregisterOnDeathEvent(NotifyDeathEvent);
+    }
+
+    private void NotifyDeathEvent()
+    {
+        m_DeathBroadcast?.RequestRaiseEvent();
+    }
+
+    public void Restart()
+    {
+        SetValue(m_Start);
     }
 }

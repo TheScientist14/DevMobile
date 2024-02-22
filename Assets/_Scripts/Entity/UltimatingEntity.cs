@@ -2,8 +2,10 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(LivingEntity))]
-public class UltimatingEntity : EntityGauge
+public class UltimatingEntity : EntityGauge, IRestartable
 {
+    [SerializeField] private VoidEvent m_UltimateBroadcast;
+
     [SerializeField] private float m_ActiveUltimateConsumption = 1.0f;
     [SerializeField] private float m_ConsumptionRate = 1.0f;
 
@@ -29,6 +31,7 @@ public class UltimatingEntity : EntityGauge
 
     private void OnDisable()
     {
+        Deactivate();
         m_LivingEntity.OnDamageTaken -= OnDamaged;
     }
 
@@ -44,6 +47,7 @@ public class UltimatingEntity : EntityGauge
             m_IsActive = true;
             StartCoroutine(HandleUltimateConsumption());
             m_Ultimate.gameObject.SetActive(true);
+            m_UltimateBroadcast?.RequestRaiseEvent();
         }
     }
 
@@ -63,6 +67,12 @@ public class UltimatingEntity : EntityGauge
             UpdateValue(-m_ActiveUltimateConsumption);
             yield return new WaitForSeconds(1.0f / m_ConsumptionRate);
         }
+        Deactivate();
+    }
+
+    public void Restart()
+    {
+        SetValue(m_Start);
         Deactivate();
     }
 }

@@ -20,7 +20,7 @@ public class DeathMenuBehaviour : BasicPanel<EndGameState>
 	{
 		// reset statistics display
 		foreach(Transform child in m_StatsContainer)
-			Destroy(child);
+			Destroy(child.gameObject);
 
 		// playtime
 		LabelledValue timeStat = Instantiate(m_LabelledValue, m_StatsContainer);

@@ -48,7 +48,9 @@ MonoBehaviour:
   m_GameStatistics:
     m_Counters:
     - m_EventToCount: {fileID: 11400000, guid: 067845b2438fdbf4a8c35844c82b94fd, type: 2}
-      m_Label: Death
+      m_Label: Deaths
+    - m_EventToCount: {fileID: 11400000, guid: 3939c6696c2039347af0e4f6683501fa, type: 2}
+      m_Label: Ultimates
     m_PlayTime: 0
 --- !u!114 &5893905226121563747
 MonoBehaviour:
