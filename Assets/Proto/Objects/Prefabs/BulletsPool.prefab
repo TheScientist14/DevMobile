@@ -39,10 +39,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3727135244374339204}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 495b26d05bd40ae4ba63a2c2d62de171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToPool: {fileID: 3992499631788969424, guid: 3dccb7c4c4233b249bc718d90884effb, type: 3}
+  _objectToPool: {fileID: 2463555951116763931, guid: 23c66b239289a364982d146b8123512c, type: 3}
   _amountToPool: 1000
+  _increasable: 1
