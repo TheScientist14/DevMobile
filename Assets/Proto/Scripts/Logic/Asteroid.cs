@@ -197,7 +197,7 @@ namespace Proto
 
             Camera mainCamera = Camera.main;
 
-            // Vector2 screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z)) *2.0f;
+            // Vector2 screenBounds = _mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, _mainCamera.transform.position.z)) *2.0f;
             float cameraHeight = mainCamera.orthographicSize;
             float cameraWidth = cameraHeight * mainCamera.aspect;
             Gizmos.DrawWireCube(mainCamera.transform.position, new Vector2(cameraWidth, cameraHeight) * 2.0f);

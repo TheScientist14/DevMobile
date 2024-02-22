@@ -1,5 +1,5 @@
-using Proto;
-
+namespace Proto
+{
 public class BulletsPool : PoolBase<BulletTest>
 {
     public static BulletsPool SharedInstance;
@@ -16,10 +16,12 @@ public class BulletsPool : PoolBase<BulletTest>
             SharedInstance = this;
         }
     }
+     
 
     private void Start()
     {
         PopulatePool();
     }
 
+}
 }

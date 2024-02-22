@@ -10,11 +10,13 @@ public class CameraAdjuster : MonoBehaviour
     // Résolution actuelle de l'écran
     private Vector2Int currentResolution;
 
+    Camera _mainCamera;
+
     private void Start()
     {
         // Obtenir la résolution initiale de l'écran
         currentResolution = new Vector2Int(Screen.width, Screen.height);
-
+        _mainCamera = Camera.main;
         AdjustCamera();
     }
 
@@ -31,24 +33,22 @@ public class CameraAdjuster : MonoBehaviour
 
     void AdjustCamera()
     {
-        Camera mainCamera = Camera.main;
-
         float targetAspect = (float)Screen.width / (float)Screen.height;
-        mainCamera.aspect = targetAspect;
+        _mainCamera.aspect = targetAspect;
 
         float screenRatio = (float)Screen.width / (float)Screen.height;
         float scaleFactor = targetAspect / screenRatio;
 
-        float newOrthographicSize = mainCamera.orthographicSize * scaleFactor;
-        mainCamera.orthographicSize = newOrthographicSize;
+        float newOrthographicSize = _mainCamera.orthographicSize * scaleFactor;
+        _mainCamera.orthographicSize = newOrthographicSize;
 
         // Calculer la position max de la caméra en fonction de la distance maximale
-        Vector3 maxCameraPosition = mainCamera.transform.position + Vector3.back * maxCameraDistance;
+        Vector3 maxCameraPosition = _mainCamera.transform.position + Vector3.back * maxCameraDistance;
 
         // Vérifie si la caméra dépasse la position maximale
-        if (mainCamera.transform.position.z < maxCameraPosition.z)
+        if (_mainCamera.transform.position.z < maxCameraPosition.z)
         {
-            mainCamera.transform.position = maxCameraPosition;
+            _mainCamera.transform.position = maxCameraPosition;
         }
     }
 }
