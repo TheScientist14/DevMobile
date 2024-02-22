@@ -16,12 +16,6 @@ public class BulletsPool : PoolBase<BulletTest>
             SharedInstance = this;
         }
     }
-     
-
-    private void Start()
-    {
-        PopulatePool();
-    }
 
 }
 }

@@ -15,6 +15,11 @@ public class PoolBase<T> : MonoBehaviour
     [SerializeField]
     private bool _increasable = true;
 
+    protected virtual void Start()
+    {
+        PopulatePool();
+    }
+
     public T GetPooledObject()
     {
         if (_pooledObjects.Count > 0)

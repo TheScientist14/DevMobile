@@ -20,6 +20,7 @@ public class ShootingEntity : MonoBehaviour
 
     // [TEMP] this data should just be taken from the entity config: 
     [SerializeField] private Transform m_BulletPrefab;
+    private ProjectilePool m_ProjectilePool;
 
     [SerializeField] private Transform m_BulletContainer;
 
@@ -28,8 +29,11 @@ public class ShootingEntity : MonoBehaviour
 
     private int m_ShootIndexInShootingPattern = 0;
 
+
+
     private void Start()
     {
+        m_ProjectilePool = ProjectilePool.SharedInstance;
         if (CheckIndexesInMuzzles())
             StartCoroutine(HandleShootingPattern());
     }
@@ -58,14 +62,16 @@ public class ShootingEntity : MonoBehaviour
             Transform currentMuzzle = m_Muzzles[currentActiveMuzzles[i]];
 
             // [TEMP] We should acquire the bullet from a pool
-            Transform newBullet = Instantiate(m_BulletPrefab, currentMuzzle.position, currentMuzzle.rotation, m_BulletContainer);
+            PoolableProjectile newBullet = m_ProjectilePool.GetPooledObject();
+            // Instantiate(m_BulletPrefab, currentMuzzle.position, currentMuzzle.rotation, m_BulletContainer);
             newBullet.gameObject.layer = gameObject.layer;
 
             if (newBullet.TryGetComponent(out ProjectileMovement projectileMovement))
             {
                 projectileMovement.Init(currentMuzzle.up);
+                m_ProjectilePool.UnloadObject(newBullet);
                 // [WARNING] We should implement a lifetime feature when Instantiate/Destroy get replaced by object pooling
-                Destroy(newBullet.gameObject, m_BulletLifetime);
+                // Destroy(newBullet.gameObject, m_BulletLifetime);
             }
             else
             {
