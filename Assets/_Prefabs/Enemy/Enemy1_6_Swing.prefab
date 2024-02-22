@@ -160,6 +160,10 @@ PrefabInstance:
       propertyPath: m_ActiveMuzzleIndexesPerShot.Array.data[7].m_MuzzlesIndexes.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8563257314508537965, guid: be865af9d4bff4a4ba446df4bf469360, type: 3}
+      propertyPath: m_EnemyName
+      value: Enemy6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5541188895289179057, guid: be865af9d4bff4a4ba446df4bf469360, type: 3}
     m_RemovedGameObjects: []

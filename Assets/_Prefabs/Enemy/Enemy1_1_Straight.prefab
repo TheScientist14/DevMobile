@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VFXAnimator: {fileID: 8676960119568282703}
+  m_DestroyOnEnd: 0
 --- !u!114 &6335023877213901155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac25b275b626b54b8483dc6bbe2f691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_EnemyName: EnemyStraight1
 --- !u!1 &8106842217297249905
 GameObject:
   m_ObjectHideFlags: 0

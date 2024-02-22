@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
+using UnityEngine.Serialization;
 
 public class EnemiesPoolManager : MonoBehaviour
 {
     public static EnemiesPoolManager SharedInstance;
 
     [SerializeField] private List<PoolingEnemy> m_PoolingEnemyList;
-    
-    Dictionary<string, PoolBase<PoolingEnemy>> m_DictPools = new Dictionary<string, PoolBase<PoolingEnemy>>();
+
+    [Header("DEBUG"), SerializeField, SerializedDictionary]
+    SerializedDictionary<string, EnemyPool> m_DictPools = new SerializedDictionary<string, EnemyPool>();
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class EnemiesPoolManager : MonoBehaviour
         }
         foreach (PoolingEnemy enemyToPool in m_PoolingEnemyList)
         {
-            if (!m_DictPools.ContainsKey(enemyToPool.gameObject.name)) {
+            if (!m_DictPools.ContainsKey(enemyToPool.EnemyName)) {
                 TryAddPoolForGO(enemyToPool);
             }
         }
@@ -30,36 +32,71 @@ public class EnemiesPoolManager : MonoBehaviour
 
     private bool TryAddPoolForGO(PoolingEnemy prefabToSpawn)
     {
-        GameObject prefabPool = new GameObject("PoolFor" + prefabToSpawn.name, typeof(PoolBase<PoolingEnemy>));
+        GameObject prefabPool = new GameObject("PoolFor" + prefabToSpawn.EnemyName, typeof(EnemyPool));
         prefabPool.transform.SetParent(transform, false);
-        PoolBase<PoolingEnemy> EnemyPool = prefabPool.GetComponent<PoolBase<PoolingEnemy>>();
+        EnemyPool EnemyPool = prefabPool.GetComponent<EnemyPool>();
         EnemyPool.SetObjectToPool(prefabToSpawn);
         EnemyPool.PopulatePool();
-        return m_DictPools.TryAdd(prefabToSpawn.name, EnemyPool);
-
+        return m_DictPools.TryAdd(prefabToSpawn.EnemyName, EnemyPool);
     }
 
     public PoolingEnemy GetEnemy(GameObject enemyPrefab)
     {
-        if (m_DictPools.ContainsKey(enemyPrefab.name))
+        PoolingEnemy poolingPrefab = enemyPrefab.GetComponent<PoolingEnemy>();
+        if (poolingPrefab is null)
+            return null;
+        return GetEnemy(poolingPrefab);
+    }
+    public PoolingEnemy GetEnemy(PoolingEnemy enemyPrefab)
+    {
+        if (m_DictPools.ContainsKey(enemyPrefab.EnemyName))
         {
-            return m_DictPools[enemyPrefab.name].GetPooledObject();
-        } else
+            return m_DictPools[enemyPrefab.EnemyName].GetPooledObject();
+        }
+        else
         {
-            PoolingEnemy poolingEnemy = null;
-            if (enemyPrefab.TryGetComponent(out poolingEnemy) && TryAddPoolForGO(poolingEnemy))
+            if(TryAddPoolForGO(enemyPrefab))
             {
-                return m_DictPools[enemyPrefab.name].GetPooledObject();
+                return m_DictPools[enemyPrefab.EnemyName].GetPooledObject();
             }
             return null;
         }
     }
 
-    public void UnloadObject(GameObject enemyPrefab)
+    public void UnloadObject(GameObject GOOfEnemyToUnload)
     {
+        PoolingEnemy EnemyToUnload = null;
+        if (GOOfEnemyToUnload.TryGetComponent<PoolingEnemy>(out EnemyToUnload)) {
+            UnloadEnemy(EnemyToUnload);
+        }
+        else
+        {
+            Destroy(GOOfEnemyToUnload);
+        }
 
     }
+    public void UnloadEnemy(PoolingEnemy poolingEnemy)
+    {
+        if (poolingEnemy == null) return;
+        if (m_DictPools.ContainsKey(poolingEnemy.EnemyName))
+        {
+            m_DictPools[poolingEnemy.EnemyName].UnloadObject(poolingEnemy);
+        }
+    }
 
+    public void UnloadObjects(List<PoolingEnemy> poolingEnemy)
+    {
+        foreach(PoolingEnemy enemy in poolingEnemy)
+        {
+            UnloadEnemy(enemy);
+        }
+    }
+
+    /// <summary>
+    /// DO NOT USE, TO MUCH COASTS
+    /// </summary>
+    /// <param name="enemiesPrefabToSpawn"></param>
+    /// <returns></returns>
     public List<PoolingEnemy> GetEnemies(List<GameObject> enemiesPrefabToSpawn)
     {
         List<PoolingEnemy> enemies = new List<PoolingEnemy>();

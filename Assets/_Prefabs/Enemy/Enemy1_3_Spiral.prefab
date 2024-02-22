@@ -505,6 +505,10 @@ PrefabInstance:
       propertyPath: m_ActiveMuzzleIndexesPerShot.Array.data[11].m_MuzzlesIndexes.Array.data[0]
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4273203418496607877, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
+      propertyPath: m_EnemyName
+      value: EnemySpiral3
+      objectReference: {fileID: 0}
     - target: {fileID: 6316762691176511453, guid: 59c9db576060fbd43b0a47f58238a3d6, type: 3}
       propertyPath: m_Name
       value: Enemy1_3_Spiral

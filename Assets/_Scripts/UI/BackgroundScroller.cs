@@ -13,7 +13,7 @@ public class BackgroundScroller : PoolBase<PoolableBackgroundObject>
 	private Vector2 m_BottomLeft;
 	private Vector2 m_TopRight;
 
-	// Start is called before the first frame update
+
 	protected override void Start()
 	{
 		base.Start();

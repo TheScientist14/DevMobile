@@ -1,0 +1,209 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpaceShipsBullets
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: d7dece7cf1234c842b5e912273585690, type: 3}
+    - {fileID: 102900000, guid: e588b1baff4d8ab419fdd1abb4954f92, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 7bfe78c138376924d852b21828c8e083: 21300000
+    - f64b24441cfd9634ab3b23ab9e763ed9: 21300000
+    - 184846b454047a346a8311783483b1c3: 21300000
+    - ace8ccb62045f6949b75fd5e84ad2323: 21300000
+    - 4c23d1d7d8ff20840ba5b1c7ab305189: 772391245
+    - 4c23d1d7d8ff20840ba5b1c7ab305189: 923102332
+    - 4c23d1d7d8ff20840ba5b1c7ab305189: 430319610
+    - 3dc346e7858f09342bf827ef6911cc6b: -783631536
+    - 3dc346e7858f09342bf827ef6911cc6b: 2046842052
+    - 3dc346e7858f09342bf827ef6911cc6b: -295781675
+    - 7651a4495b995874a96db77e1c157736: 1732556973
+    - 7651a4495b995874a96db77e1c157736: -2033771579
+    - 7651a4495b995874a96db77e1c157736: 78880669
+    - 7651a4495b995874a96db77e1c157736: -1982172792
+    - 7651a4495b995874a96db77e1c157736: 247186558
+    - 7651a4495b995874a96db77e1c157736: -1931916119
+    - 7651a4495b995874a96db77e1c157736: 740793923
+    - 7651a4495b995874a96db77e1c157736: 2013986593
+    - 7651a4495b995874a96db77e1c157736: -484135370
+    - bd88cd1a8b7e97742b9f77ec82eda9f6: 21300000
+    - f9dda99af57c81942bfff793f20fa0ff: 21300000
+    - 4f804b4febaa72f47b385b3a6c241187: 148494729
+    - 4f804b4febaa72f47b385b3a6c241187: -921886159
+    - 4f804b4febaa72f47b385b3a6c241187: -280907748
+    - 4f804b4febaa72f47b385b3a6c241187: -387873934
+    - 4f804b4febaa72f47b385b3a6c241187: -1728363813
+    - 4f804b4febaa72f47b385b3a6c241187: -2077760865
+    - 4f804b4febaa72f47b385b3a6c241187: -143255661
+    - 4f804b4febaa72f47b385b3a6c241187: -1522350235
+    - 4f804b4febaa72f47b385b3a6c241187: -143283578
+    - 4f804b4febaa72f47b385b3a6c241187: 815489561
+    - 4f804b4febaa72f47b385b3a6c241187: 1985670568
+    - 4f804b4febaa72f47b385b3a6c241187: -838850554
+    - 4f804b4febaa72f47b385b3a6c241187: -1742664287
+    - 4f804b4febaa72f47b385b3a6c241187: 1398464975
+    - 4f804b4febaa72f47b385b3a6c241187: -1830128163
+    - 4f804b4febaa72f47b385b3a6c241187: 458332998
+    - 4f804b4febaa72f47b385b3a6c241187: 806797082
+    - 4f804b4febaa72f47b385b3a6c241187: 777429540
+    - 4f804b4febaa72f47b385b3a6c241187: -829836538
+    - 4f804b4febaa72f47b385b3a6c241187: 1363540998
+    - 4f804b4febaa72f47b385b3a6c241187: -1172303764
+    - 4f804b4febaa72f47b385b3a6c241187: -82217925
+    - 4f804b4febaa72f47b385b3a6c241187: 1329695639
+    - 4f804b4febaa72f47b385b3a6c241187: 1392321441
+    - 4f804b4febaa72f47b385b3a6c241187: 2062550175
+    - 4f804b4febaa72f47b385b3a6c241187: 681260329
+    - 4f804b4febaa72f47b385b3a6c241187: -1383524862
+    - 4f804b4febaa72f47b385b3a6c241187: -881283421
+    - 4f804b4febaa72f47b385b3a6c241187: 445695886
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7bfe78c138376924d852b21828c8e083, type: 3}
+  - {fileID: 21300000, guid: f64b24441cfd9634ab3b23ab9e763ed9, type: 3}
+  - {fileID: 21300000, guid: 184846b454047a346a8311783483b1c3, type: 3}
+  - {fileID: 21300000, guid: ace8ccb62045f6949b75fd5e84ad2323, type: 3}
+  - {fileID: 772391245, guid: 4c23d1d7d8ff20840ba5b1c7ab305189, type: 3}
+  - {fileID: 923102332, guid: 4c23d1d7d8ff20840ba5b1c7ab305189, type: 3}
+  - {fileID: 430319610, guid: 4c23d1d7d8ff20840ba5b1c7ab305189, type: 3}
+  - {fileID: -783631536, guid: 3dc346e7858f09342bf827ef6911cc6b, type: 3}
+  - {fileID: 2046842052, guid: 3dc346e7858f09342bf827ef6911cc6b, type: 3}
+  - {fileID: -295781675, guid: 3dc346e7858f09342bf827ef6911cc6b, type: 3}
+  - {fileID: 1732556973, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: -2033771579, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: 78880669, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: -1982172792, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: 247186558, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: -1931916119, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: 740793923, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: 2013986593, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: -484135370, guid: 7651a4495b995874a96db77e1c157736, type: 3}
+  - {fileID: 21300000, guid: bd88cd1a8b7e97742b9f77ec82eda9f6, type: 3}
+  - {fileID: 21300000, guid: f9dda99af57c81942bfff793f20fa0ff, type: 3}
+  - {fileID: 148494729, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -921886159, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -280907748, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -387873934, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -1728363813, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -2077760865, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -143255661, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -1522350235, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -143283578, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 815489561, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 1985670568, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -838850554, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -1742664287, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 1398464975, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -1830128163, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 458332998, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 806797082, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 777429540, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -829836538, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 1363540998, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -1172303764, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -82217925, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 1329695639, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 1392321441, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 2062550175, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 681260329, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -1383524862, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: -881283421, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  - {fileID: 445695886, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - purple_03
+  - green_06
+  - projectile_1
+  - projectile_2
+  - spritesheet_enemy_2_2
+  - spritesheet_enemy_2_0
+  - spritesheet_enemy_2_1
+  - spritesheet_enemy_1_1
+  - spritesheet_enemy_1_0
+  - spritesheet_enemy_1_2
+  - spritesheet_player_8
+  - spritesheet_player_6
+  - spritesheet_player_7
+  - spritesheet_player_4
+  - spritesheet_player_5
+  - spritesheet_player_2
+  - spritesheet_player_3
+  - spritesheet_player_0
+  - spritesheet_player_1
+  - orange_03
+  - red_01
+  - bulletSprites_7
+  - bulletSprites_4
+  - bulletSprites_5
+  - bulletSprites_8
+  - bulletSprites_9
+  - bulletSprites_19
+  - bulletSprites_18
+  - bulletSprites_11
+  - bulletSprites_10
+  - bulletSprites_13
+  - bulletSprites_12
+  - bulletSprites_15
+  - bulletSprites_14
+  - bulletSprites_17
+  - bulletSprites_16
+  - bulletSprites_20
+  - bulletSprites_21
+  - bulletSprites_22
+  - bulletSprites_23
+  - bulletSprites_24
+  - bulletSprites_25
+  - bulletSprites_26
+  - bulletSprites_27
+  - bulletSprites_28
+  - bulletSprites_2
+  - bulletSprites_3
+  - bulletSprites_0
+  - bulletSprites_1
+  - bulletSprites_6
+  m_RenderDataMap: {}
+  m_Tag: SpaceShipsBullets
+  m_IsVariant: 0
