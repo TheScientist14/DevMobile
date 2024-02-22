@@ -22,9 +22,112 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Inputs"",
-    ""maps"": [],
-    ""controlSchemes"": []
+    ""maps"": [
+        {
+            ""name"": ""Player"",
+            ""id"": ""ac1e6ba9-1554-49cd-b5d5-71d8ff4e4025"",
+            ""actions"": [
+                {
+                    ""name"": ""TouchscreenPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""13c9ebd8-57ab-4223-a96e-47d9a7bb1863"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TouchscreenTouch"",
+                    ""type"": ""Value"",
+                    ""id"": ""8bbafa6a-37b4-4b24-b33e-5d6c47a00989"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5b2ed3ef-8f98-4318-b334-501f0e42320a"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touchscreen"",
+                    ""action"": ""TouchscreenPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""339105f8-8e0c-4fee-bbd0-4d7f5575c995"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KbTest"",
+                    ""action"": ""TouchscreenPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cdeb398-6e23-4ef5-8352-bee481adf1a8"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touchscreen"",
+                    ""action"": ""TouchscreenTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96086cfc-b2b3-4c06-a376-449bb76d2917"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KbTest"",
+                    ""action"": ""TouchscreenTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        }
+    ],
+    ""controlSchemes"": [
+        {
+            ""name"": ""Touchscreen"",
+            ""bindingGroup"": ""Touchscreen"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""KbTest"",
+            ""bindingGroup"": ""KbTest"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_TouchscreenPosition = m_Player.FindAction("TouchscreenPosition", throwIfNotFound: true);
+        m_Player_TouchscreenTouch = m_Player.FindAction("TouchscreenTouch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -81,5 +184,82 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     public int FindBinding(InputBinding bindingMask, out InputAction action)
     {
         return asset.FindBinding(bindingMask, out action);
+    }
+
+    // Player
+    private readonly InputActionMap m_Player;
+    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_TouchscreenPosition;
+    private readonly InputAction m_Player_TouchscreenTouch;
+    public struct PlayerActions
+    {
+        private @Inputs m_Wrapper;
+        public PlayerActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TouchscreenPosition => m_Wrapper.m_Player_TouchscreenPosition;
+        public InputAction @TouchscreenTouch => m_Wrapper.m_Player_TouchscreenTouch;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            @TouchscreenPosition.started += instance.OnTouchscreenPosition;
+            @TouchscreenPosition.performed += instance.OnTouchscreenPosition;
+            @TouchscreenPosition.canceled += instance.OnTouchscreenPosition;
+            @TouchscreenTouch.started += instance.OnTouchscreenTouch;
+            @TouchscreenTouch.performed += instance.OnTouchscreenTouch;
+            @TouchscreenTouch.canceled += instance.OnTouchscreenTouch;
+        }
+
+        private void UnregisterCallbacks(IPlayerActions instance)
+        {
+            @TouchscreenPosition.started -= instance.OnTouchscreenPosition;
+            @TouchscreenPosition.performed -= instance.OnTouchscreenPosition;
+            @TouchscreenPosition.canceled -= instance.OnTouchscreenPosition;
+            @TouchscreenTouch.started -= instance.OnTouchscreenTouch;
+            @TouchscreenTouch.performed -= instance.OnTouchscreenTouch;
+            @TouchscreenTouch.canceled -= instance.OnTouchscreenTouch;
+        }
+
+        public void RemoveCallbacks(IPlayerActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerActions @Player => new PlayerActions(this);
+    private int m_TouchscreenSchemeIndex = -1;
+    public InputControlScheme TouchscreenScheme
+    {
+        get
+        {
+            if (m_TouchscreenSchemeIndex == -1) m_TouchscreenSchemeIndex = asset.FindControlSchemeIndex("Touchscreen");
+            return asset.controlSchemes[m_TouchscreenSchemeIndex];
+        }
+    }
+    private int m_KbTestSchemeIndex = -1;
+    public InputControlScheme KbTestScheme
+    {
+        get
+        {
+            if (m_KbTestSchemeIndex == -1) m_KbTestSchemeIndex = asset.FindControlSchemeIndex("KbTest");
+            return asset.controlSchemes[m_KbTestSchemeIndex];
+        }
+    }
+    public interface IPlayerActions
+    {
+        void OnTouchscreenPosition(InputAction.CallbackContext context);
+        void OnTouchscreenTouch(InputAction.CallbackContext context);
     }
 }
