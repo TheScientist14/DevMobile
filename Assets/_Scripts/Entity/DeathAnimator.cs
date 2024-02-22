@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(LivingEntity))]
 public class DeathAnimator : MonoBehaviour
@@ -7,6 +8,8 @@ public class DeathAnimator : MonoBehaviour
 	[SerializeField] private bool m_DestroyOnEnd;
 
 	private LivingEntity m_LivingEntity;
+
+	[SerializeField] private UnityEvent m_OnEndEvent;
 
 	private void Awake()
 	{
@@ -38,5 +41,7 @@ public class DeathAnimator : MonoBehaviour
 		m_VFXAnimator.SetTrigger("Explode");
 		if(m_DestroyOnEnd)
 			Destroy(gameObject, 0.7f);
-	}
+        m_OnEndEvent.Invoke();
+
+    }
 }

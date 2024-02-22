@@ -388,7 +388,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 780226909972501358, guid: 7a0bdec944dadab4d946bf722b3ff405, type: 3}
       propertyPath: _spawnDelay
-      value: 0.2
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 780226909972501358, guid: 7a0bdec944dadab4d946bf722b3ff405, type: 3}
+      propertyPath: _willHaveLifeSpan
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3367091334454172589, guid: 7a0bdec944dadab4d946bf722b3ff405, type: 3}
       propertyPath: m_LocalPosition.x

@@ -420,6 +420,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_VFXAnimator: {fileID: 8676960119568282703}
   m_DestroyOnEnd: 0
+  m_OnEndEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4273203418496607877}
+        m_TargetAssemblyTypeName: PoolingEnemy, Assembly-CSharp
+        m_MethodName: Recycle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6335023877213901155
 MonoBehaviour:
   m_ObjectHideFlags: 0
