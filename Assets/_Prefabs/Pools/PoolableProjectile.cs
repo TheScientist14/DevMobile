@@ -15,9 +15,4 @@ public class PoolableProjectile : Poolable
     {
         m_projectilePool.UnloadObject(this);
     }
-
-    public void RecycleIn(float seconds)
-    {
-
-    }
 }
