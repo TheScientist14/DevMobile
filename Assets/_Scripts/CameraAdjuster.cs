@@ -8,12 +8,12 @@ public class CameraAdjuster : MonoBehaviour
 
     [Range(-1f, 1f)]
     public int adaptPosition;
-
+    public float aspect;
     // Résolution actuelle de l'écran
-    private Vector2Int currentResolution;
+    public Vector2Int currentResolution;
 
-    float defaultWidth;
-    float defaultHeight;
+    public float defaultWidth;
+    public float defaultHeight;
 
     Vector3 CameraPos;
 
@@ -22,6 +22,7 @@ public class CameraAdjuster : MonoBehaviour
         CameraPos = Camera.main.transform.position;
         defaultHeight = Camera.main.orthographicSize;
         defaultWidth = Camera.main.orthographicSize * Camera.main.aspect;
+        aspect =  Camera.main.aspect;
 
         // Obtenir la résolution initiale de l'écran
         currentResolution = new Vector2Int(Screen.width, Screen.height);
@@ -36,7 +37,8 @@ public class CameraAdjuster : MonoBehaviour
         {
             currentResolution.x = Screen.width;
             currentResolution.y = Screen.height;
-
+            defaultWidth = Camera.main.orthographicSize * Camera.main.aspect;
+            aspect = Camera.main.aspect;
             AdjustCamera();
         }
     }
