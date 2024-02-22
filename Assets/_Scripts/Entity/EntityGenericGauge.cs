@@ -15,8 +15,8 @@ public class EntityGauge : MonoBehaviour
 
     // void OnValueChanged(float iDelta)
     public event Action<float> OnValueChanged;
-    protected event Action OnMinReached;
-    protected event Action OnMaxReached;
+    public event Action OnMinReached;
+    public event Action OnMaxReached;
 
     protected void Awake()
     {

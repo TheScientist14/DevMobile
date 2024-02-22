@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ShootingEntity : MonoBehaviour
+public class ShootingEntity : MonoBehaviour, IRestartable
 {
 	[Serializable]
 	public struct ActiveMuzzlesIndexList
@@ -29,14 +30,26 @@ public class ShootingEntity : MonoBehaviour
 
 	private int m_ShootIndexInShootingPattern = 0;
 
-    private void Start()
+    private void OnEnable()
     {
         m_ProjectilePool = ProjectilePool.SharedInstance;
-        if (CheckIndexesInMuzzles())
+        m_IsShooting = true;
+        if (CheckIndexesInMuzzles() && GameManager.Get().GetStateMachine().GetState() is not MenuGameState)
             StartCoroutine(HandleShootingPattern());
     }
 
-	private IEnumerator HandleShootingPattern()
+    public void Restart()
+    {
+        m_IsShooting = true;
+        StartCoroutine(HandleShootingPattern());
+    }
+
+    private void OnDisable()
+    {
+		m_IsShooting = false;
+    }
+
+    private IEnumerator HandleShootingPattern()
 	{
 		while(m_IsShooting && m_FireRate > 0)
 		{

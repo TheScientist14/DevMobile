@@ -145,6 +145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DamageDealtOnCollision: 0
   m_SelfDestructOnCollision: 0
+  m_OnCollisionAndNoDestruction:
+    m_PersistentCalls:
+      m_Calls: []
   m_DamageOverTime: 1
   m_DamagePerHit: 1
   m_HitRate: 10
@@ -380,6 +383,7 @@ MonoBehaviour:
   m_FireRate: 8
   m_BulletLifetime: 5
   m_BulletPrefab: {fileID: 5816821469450775295, guid: a1f8013b75743c348ba29e409e91e73a, type: 3}
+  m_ProjectileData: {fileID: 0}
   m_BulletContainer: {fileID: 0}
   m_Muzzles:
   - {fileID: 574431392150189567}
@@ -402,6 +406,7 @@ MonoBehaviour:
   m_Max: 10
   m_Min: 0
   m_Start: 10
+  m_DeathBroadcast: {fileID: 0}
 --- !u!114 &2363797435006440878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +455,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_VFXAnimator: {fileID: 3799946400607592667}
   m_DestroyOnEnd: 0
+  m_OnEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &8872666397053678666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -537,6 +545,7 @@ MonoBehaviour:
   m_Max: 10
   m_Min: 0
   m_Start: 0
+  m_UltimateBroadcast: {fileID: 11400000, guid: 3939c6696c2039347af0e4f6683501fa, type: 2}
   m_ActiveUltimateConsumption: 0.6
   m_ConsumptionRate: 10
   m_LifeToUltimateConversion: 2

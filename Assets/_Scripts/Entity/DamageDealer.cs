@@ -42,7 +42,9 @@ public class DamageDealer : MonoBehaviour
     {
         while (true)
         {
-            foreach (LivingEntity entity in m_DamageableEntities)
+            LivingEntity[] currentEntitiesToDamage = new LivingEntity[m_DamageableEntities.Count];
+            m_DamageableEntities.CopyTo(currentEntitiesToDamage);
+            foreach (LivingEntity entity in currentEntitiesToDamage)
             {
                 entity.TakeDamage(m_DamagePerHit);
             }

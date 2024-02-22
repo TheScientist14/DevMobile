@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Max: 4
   m_Min: 0
   m_Start: 4
+  m_DeathBroadcast: {fileID: 11400000, guid: 067845b2438fdbf4a8c35844c82b94fd, type: 2}
 --- !u!50 &4066662907001255182
 Rigidbody2D:
   serializedVersion: 4
