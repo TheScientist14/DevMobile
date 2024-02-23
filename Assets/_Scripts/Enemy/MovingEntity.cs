@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -18,12 +17,18 @@ public class MovingEntity : MonoBehaviour
 
 	[SerializeField] private float m_Speed = 1;
 
-	// Start is called before the first frame update
-	void Start()
+	void OnEnable()
 	{
-		if(InitWaypoints())
-			m_CurPosOnPath = m_Waypoints[0];
+		if (InitWaypoints())
+			Init();
 	}
+
+	public void Init()
+	{
+		hasStarted = false;
+		m_NextWaypointIdx = 1;
+		m_CurPosOnPath = m_Waypoints[0];
+    }
 
 	private bool InitWaypoints()
 	{

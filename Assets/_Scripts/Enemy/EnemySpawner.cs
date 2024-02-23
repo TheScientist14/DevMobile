@@ -80,14 +80,20 @@ public class EnemySpawner : MonoBehaviour
 			identifier.Setup(m_Generator, iId);
 		}
 
-		MovingEntity movingEntity;
+        if (newEnemy.TryGetComponent(out LivingEntity life))
+        {
+			life.Restart();
+        }
+
+        MovingEntity movingEntity;
 		if(!newEnemy.TryGetComponent(out movingEntity))
 		{
 			Debug.LogWarning("Spawned an object with no moving entity component.");
 			return;
 		}
 
-		movingEntity.SetStartPos(GetRandomPosInside(m_InitZone));
+        movingEntity.enabled = true;
+        movingEntity.SetStartPos(GetRandomPosInside(m_InitZone));
 		Path path = m_Pathes[Random.Range(0, m_Pathes.Count)];
 		movingEntity.SetPathName(path.Name);
 		movingEntity.SetDoLoop(path.DoLoop);
