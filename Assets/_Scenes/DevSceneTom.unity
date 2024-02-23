@@ -1660,6 +1660,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 8632831168482811182, guid: db484af928223de458a0aec261672d6e, type: 3}
+      propertyPath: m_DoLogGeneratorHeartBeatReports
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8684707551105861169, guid: db484af928223de458a0aec261672d6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

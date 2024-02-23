@@ -44,17 +44,17 @@ public class EntityGauge : MonoBehaviour
         m_Value = Mathf.Clamp(iValue, m_Min, m_Max);
     }
 
-    protected float GetValue()
+    public float GetValue()
     {
         return m_Value;
     }
 
-    protected bool IsMinimal()
+    public bool IsMinimal()
     {
         return m_Value <= m_Min + Mathf.Epsilon;
     }
 
-    protected bool IsMaximal()
+    public bool IsMaximal()
     {
         return m_Value >= m_Max - Mathf.Epsilon;
     }
