@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
@@ -19,13 +20,69 @@ public class EnemySpawner : MonoBehaviour
 	[SerializeField] private Rect m_SpawnZone;
 	[SerializeField] private Rect m_InitZone;
 
-	public void Spawn()
+    private EnemiesPoolManager m_EnemiesPool;
+    [SerializeField] private List<PoolingEnemy> m_EnemiesToPool;
+    [SerializeField] private float m_SpawnDelay = 0.5f;
+
+	[SerializeField] private EnemyGenerator m_Generator;
+
+    private void OnEnable()
+    {
+		m_Generator.OnHeartBeat += OnGeneratorHeartBeat;
+    }
+
+    private void OnDisable()
+    {
+        m_Generator.OnHeartBeat -= OnGeneratorHeartBeat;
+    }
+
+    void Start()
 	{
-		// TODO: replace gameObject with proper parameter value
-		GameObject instance = Instantiate(gameObject, GetRandomPosInside(m_SpawnZone), Quaternion.identity);
+		m_EnemiesPool = EnemiesPoolManager.SharedInstance;
+	}
+
+	public void OnGeneratorHeartBeat()
+	{
+		StartCoroutine(HandleMultiSpawn());
+	}
+
+    public IEnumerator HandleMultiSpawn()
+	{
+		List<GameObject> queueCopy = new();
+        queueCopy.AddRange(m_Generator.GetSpawnQueue());
+        List<int> idsCopy = new();
+        idsCopy.AddRange(m_Generator.GetSpawnQueueIdentifiers());
+		Assert.AreEqual(queueCopy.Count, idsCopy.Count);
+
+        int i = 0;
+		while (i < queueCopy.Count)
+		{
+			Spawn(queueCopy[i], idsCopy[i]);
+			++i;
+			yield return new WaitForSeconds(m_SpawnDelay);
+		}
+	}
+
+	public void Spawn(GameObject iToSpawn, int iId)
+	{
+        PoolingEnemy newEnemy = m_EnemiesPool.GetEnemy(iToSpawn);
+		if (newEnemy != null)
+		{
+			newEnemy.transform.position = GetRandomPosInside(m_SpawnZone);
+		}
+		else
+        {
+            Debug.LogWarning("Trying to pool a null enemy on Spawn !");
+			return;
+        }
+
+		if (newEnemy.TryGetComponent(out GeneratorIdentifier identifier))
+		{
+			identifier.Setup(m_Generator, iId);
+		}
 
 		MovingEntity movingEntity;
-		if(!instance.TryGetComponent(out movingEntity))
+		if(!newEnemy.TryGetComponent(out movingEntity))
 		{
 			Debug.LogWarning("Spawned an object with no moving entity component.");
 			return;

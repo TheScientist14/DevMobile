@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class EnemyGenerator : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour, IRestartable
 {
     [SerializeField] private EnemyGeneratorData m_EnemyGeneratorData;
     [SerializeField] private AnimationCurve m_OpeningCurve;
@@ -17,6 +19,7 @@ public class EnemyGenerator : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool m_DoLogGeneratorHeartBeatReports;
 
+    private float m_CurrentDifficulty;
     private int m_SurvivedPeriodsCount;
     private bool m_IsOpeningDone;
     private float m_Time;
@@ -25,7 +28,6 @@ public class EnemyGenerator : MonoBehaviour
 
     private IEnumerator m_CurrentHandle;
 
-    private float m_CurrentDifficulty;
 
     private float m_MinEnemyDifficulty;
     private float m_MaxEnemyDifficulty;
@@ -33,6 +35,9 @@ public class EnemyGenerator : MonoBehaviour
     private List<int> m_EnemiesIndexesSortedByDifficulty;
 
     private List<GameObject> m_SpawnQueue;
+    private List<int> m_SpawnQueueIdentifiers;
+
+    public event Action OnHeartBeat;
 
     private void Awake()
     {
@@ -50,6 +55,17 @@ public class EnemyGenerator : MonoBehaviour
         m_MaxEnemyDifficulty = m_SortedDifficulties[^1];
 
         m_SpawnQueue = new();
+        m_SpawnQueueIdentifiers = new();
+    }
+
+    public void Restart()
+    {
+        m_SpawnQueue.Clear();
+        m_SpawnQueueIdentifiers.Clear();
+        m_CurrentDifficulty = 0f;
+        m_SurvivedPeriodsCount = 0;
+        m_IsOpeningDone = false;
+        m_Time = 0f;
     }
 
     private void OnEnable()
@@ -61,7 +77,6 @@ public class EnemyGenerator : MonoBehaviour
     private void OnDisable()
     {
         m_GameStateMachine.OnStateChange -= OnStateChanged;
-
     }
 
     private void OnStateChanged(IGameState iPrevious, IGameState iCurrent)
@@ -73,7 +88,8 @@ public class EnemyGenerator : MonoBehaviour
         }
         else
         {
-            StopCoroutine(m_CurrentHandle);
+            if (m_CurrentHandle != null)
+                StopCoroutine(m_CurrentHandle);
         }
     }
 
@@ -93,6 +109,8 @@ public class EnemyGenerator : MonoBehaviour
             }
 
             m_SpawnQueue.Clear();
+            m_SpawnQueueIdentifiers.Clear();
+
             float targetDifficulty = ComputeTargetDifficulty();
             if (targetDifficulty > m_CurrentDifficulty)
                 AdjustDifficulty(targetDifficulty - m_CurrentDifficulty);
@@ -120,6 +138,7 @@ public class EnemyGenerator : MonoBehaviour
                 CheckForOverTime(m_OpeningDuration, out m_IsOpeningDone);
             }
 
+            OnHeartBeat?.Invoke();
             yield return new WaitForSeconds(m_RefreshTime);
         }
     }
@@ -156,10 +175,11 @@ public class EnemyGenerator : MonoBehaviour
         while (iNeeded > m_MinEnemyDifficulty)
         {
             EnemyGeneratorData.Entry chosen;
+            int enemyIdentifier;
             if (iNeeded > m_MaxEnemyDifficulty)
             {
-                int randomEnemyType = Random.Range(0, m_EnemiesIndexesSortedByDifficulty.Count);
-                chosen = m_EnemyGeneratorData.Get(randomEnemyType);
+                enemyIdentifier = Random.Range(0, m_EnemiesIndexesSortedByDifficulty.Count);
+                chosen = m_EnemyGeneratorData.Get(enemyIdentifier);
             }
             else
             {
@@ -170,9 +190,11 @@ public class EnemyGenerator : MonoBehaviour
                 if (m_SortedDifficulties[index] - iNeeded < iNeeded - m_SortedDifficulties[index - 1])
                     --index;
 
-                chosen = m_EnemyGeneratorData.Get(m_EnemiesIndexesSortedByDifficulty[index]);
+                enemyIdentifier = m_EnemiesIndexesSortedByDifficulty[index];
+                chosen = m_EnemyGeneratorData.Get(enemyIdentifier);
             }
             m_SpawnQueue.Add(chosen.m_EnemyPrefab);
+            m_SpawnQueueIdentifiers.Add(enemyIdentifier);
             m_CurrentDifficulty += chosen.m_Difficulty;
             iNeeded -= chosen.m_Difficulty;
         }
@@ -181,5 +203,15 @@ public class EnemyGenerator : MonoBehaviour
     public void LowerCurrentDifficulty(int loweringTypeId)
     {
         m_CurrentDifficulty -= m_EnemyGeneratorData.Get(loweringTypeId).m_Difficulty;
+    }
+
+    public List<GameObject> GetSpawnQueue()
+    {
+        return m_SpawnQueue;
+    }
+
+    public List<int> GetSpawnQueueIdentifiers()
+    {
+        return m_SpawnQueueIdentifiers;
     }
 }
