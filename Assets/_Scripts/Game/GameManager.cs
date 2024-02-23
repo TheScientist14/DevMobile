@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
+		Application.targetFrameRate = 60;
+
 		if(m_Singleton == null)
 		{
 			m_Singleton = this;
