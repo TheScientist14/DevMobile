@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	private void Awake()
 	{
 		m_PlayerController = GetComponent<PlayerController>();
+		
 	}
 
 	private void FixedUpdate()

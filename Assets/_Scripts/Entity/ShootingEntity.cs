@@ -18,11 +18,11 @@ public class ShootingEntity : MonoBehaviour, IRestartable
 	[SerializeField] private float m_FireRate;
 	[SerializeField] private float m_BulletLifetime; // this could be computed and optimized
 
-    [SerializeField] private Transform m_BulletPrefab;
+
     [SerializeField] private ProjectileData m_ProjectileData;
+	[SerializeField, Layer] private int m_ProjectileLayer;
     private ProjectilePool m_ProjectilePool;
 
-	[SerializeField] private Transform m_BulletContainer;
 
 	[SerializeField] private List<Transform> m_Muzzles;
 	[SerializeField] private List<ActiveMuzzlesIndexList> m_ActiveMuzzleIndexesPerShot;
@@ -74,7 +74,7 @@ public class ShootingEntity : MonoBehaviour, IRestartable
             PoolableProjectile newBullet = m_ProjectilePool.GetPooledObject();
             newBullet.transform.position = currentMuzzle.position;
             newBullet.transform.rotation = currentMuzzle.rotation;
-            newBullet.gameObject.layer = gameObject.layer;
+            newBullet.gameObject.layer = m_ProjectileLayer;
 
             if (newBullet.TryGetComponent(out ProjectileSyncer projectileSyncer))
             {

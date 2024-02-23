@@ -87,7 +87,11 @@ PrefabInstance:
     - target: {fileID: 6396231129473102188, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f64b24441cfd9634ab3b23ab9e763ed9, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396231129473102188, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6807955024667336995, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -131,6 +135,10 @@ PrefabInstance:
     - target: {fileID: 7546422949334971544, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_Name
       value: Enemy1_4_Spiral4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200776822929216266, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
+      propertyPath: m_SpriteLoader.m_SpriteName
+      value: green_06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

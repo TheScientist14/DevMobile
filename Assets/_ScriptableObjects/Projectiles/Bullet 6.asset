@@ -15,6 +15,9 @@ MonoBehaviour:
   _speed: 3
   _colliderSize: {x: 0.12, y: 0.08}
   _sprite: {fileID: -838850554, guid: 4f804b4febaa72f47b385b3a6c241187, type: 3}
+  _loader:
+    m_Atlas: {fileID: 4343727234628468602, guid: 1c78263ff62f4eb449ad5d4d3d229977, type: 2}
+    m_SpriteName: bulletSprites_15
   _damage: 1
   _selfDestructOnCollision: 0
   _damageOverTime: 0

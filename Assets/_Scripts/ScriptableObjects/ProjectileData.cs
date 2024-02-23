@@ -16,10 +16,9 @@ public class ProjectileData : ScriptableObject
     private Vector2 _colliderSize;
     public Vector2 ColliderSize => _colliderSize;
 
-
     [SerializeField]
-    private Sprite _sprite;
-    public Sprite Sprite => _sprite;
+    private SpriteLoader _loader;
+    public Sprite Sprite => _loader.Sprite;
 
 
     [SerializeField]

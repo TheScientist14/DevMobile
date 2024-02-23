@@ -207,7 +207,11 @@ PrefabInstance:
     - target: {fileID: 6396231129473102188, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f9dda99af57c81942bfff793f20fa0ff, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396231129473102188, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6807955024667336995, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -263,6 +267,10 @@ PrefabInstance:
     - target: {fileID: 7698734786674624494, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_Icon
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200776822929216266, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
+      propertyPath: m_SpriteLoader.m_SpriteName
+      value: red_01
       objectReference: {fileID: 0}
     - target: {fileID: 9036588330571062157, guid: 3b58ee1d63ba75b4f83abc44154bc0a5, type: 3}
       propertyPath: m_LocalPosition.x

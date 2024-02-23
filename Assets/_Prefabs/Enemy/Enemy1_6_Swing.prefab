@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 236254707800422055, guid: be865af9d4bff4a4ba446df4bf469360, type: 3}
+      propertyPath: m_SpriteLoader.m_SpriteName
+      value: purple_03
+      objectReference: {fileID: 0}
     - target: {fileID: 1887602826691055925, guid: be865af9d4bff4a4ba446df4bf469360, type: 3}
       propertyPath: m_Name
       value: Enemy1_6_Swing
@@ -19,7 +23,11 @@ PrefabInstance:
     - target: {fileID: 3047706763325134017, guid: be865af9d4bff4a4ba446df4bf469360, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7bfe78c138376924d852b21828c8e083, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047706763325134017, guid: be865af9d4bff4a4ba446df4bf469360, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3238911064291083406, guid: be865af9d4bff4a4ba446df4bf469360, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

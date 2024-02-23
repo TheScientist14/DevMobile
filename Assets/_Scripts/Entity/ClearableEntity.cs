@@ -6,6 +6,7 @@ public class ClearableEntity : MonoBehaviour
     private GameStateMachine m_GameStateMachine;
     private IRecyclable[] m_ToRecycle;
 
+
     private void Awake()
     {
         m_GameStateMachine = GameManager.Get().GetStateMachine();

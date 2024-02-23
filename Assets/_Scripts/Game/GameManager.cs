@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameStatistics m_GameStatistics;
 
 	private void Awake()
-	{
+	{ 
 		Application.targetFrameRate = 60;
-
-		if(m_Singleton == null)
+		QualitySettings.vSyncCount = 0;
+        if (m_Singleton == null)
 		{
 			m_Singleton = this;
 			DontDestroyOnLoad(gameObject);

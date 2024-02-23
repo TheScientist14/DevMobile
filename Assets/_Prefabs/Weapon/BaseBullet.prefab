@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5816821469450775295}
   - component: {fileID: 4900459762991859997}
   - component: {fileID: 24978644320308682}
-  - component: {fileID: 1193960031522749656}
   - component: {fileID: 3514302752396321978}
   - component: {fileID: -705829038526251298}
   - component: {fileID: 6475795521079671280}
@@ -97,33 +96,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.34}
   m_EdgeRadius: 0
---- !u!50 &1193960031522749656
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3039907296852044175}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &3514302752396321978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +157,7 @@ MonoBehaviour:
   m_BoxCollider: {fileID: 24978644320308682}
   m_DamageDealer: {fileID: 3514302752396321978}
   m_ProjectileMovement: {fileID: 4900459762991859997}
+  m_Poolable: {fileID: -705829038526251298}
 --- !u!114 &-1625955591635951963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +244,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 184846b454047a346a8311783483b1c3, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -279,7 +252,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &6866814602063450993
@@ -294,4 +267,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83ef7730e735904a85cd2bcfce1e2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_poolableProjectile: {fileID: -705829038526251298}
+  m_GameObjectToRecycle: {fileID: 5816821469450775295}

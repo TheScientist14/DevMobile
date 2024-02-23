@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 855045902426051668}
   - component: {fileID: 4021442857023166122}
   - component: {fileID: 4000268711836720418}
-  - component: {fileID: 4099476285859496646}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -191,23 +190,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
---- !u!114 &4099476285859496646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776517929111219263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &6316762691176511453
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +211,8 @@ GameObject:
   - component: {fileID: 4273203418496607877}
   - component: {fileID: 1843015087712695250}
   - component: {fileID: 8203963813685953573}
+  - component: {fileID: 5682665944464265295}
+  - component: {fileID: 9153589075130385602}
   m_Layer: 7
   m_Name: Enemy1_1_Straight
   m_TagString: Untagged
@@ -295,7 +279,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -783631536, guid: 3dc346e7858f09342bf827ef6911cc6b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -303,7 +287,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4254058015533532592
@@ -495,9 +479,8 @@ MonoBehaviour:
   m_IsShooting: 1
   m_FireRate: 6
   m_BulletLifetime: 5
-  m_BulletPrefab: {fileID: 3140013393378654107, guid: f210750be3f096d4ca8a7df913cc6726, type: 3}
   m_ProjectileData: {fileID: 11400000, guid: ee33e30c01e735e4cadda5e6da425685, type: 2}
-  m_BulletContainer: {fileID: 0}
+  m_ProjectileLayer: 9
   m_Muzzles:
   - {fileID: 76493298146635350}
   m_ActiveMuzzleIndexesPerShot:
@@ -544,6 +527,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8046e85fd9094488f484e748f0eaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5682665944464265295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316762691176511453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41647f5264621c344bd3604908b0fb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLoader:
+    m_Atlas: {fileID: 4343727234628468602, guid: 1c78263ff62f4eb449ad5d4d3d229977, type: 2}
+    m_SpriteName: spritesheet_enemy_1_1
+--- !u!114 &9153589075130385602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316762691176511453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83ef7730e735904a85cd2bcfce1e2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameObjectToRecycle: {fileID: 7019236627722707558}
 --- !u!1 &8106842217297249905
 GameObject:
   m_ObjectHideFlags: 0

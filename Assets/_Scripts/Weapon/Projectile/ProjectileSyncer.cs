@@ -17,7 +17,10 @@ public class ProjectileSyncer : MonoBehaviour
 
     [SerializeField] private ProjectileMovement m_ProjectileMovement;
     public ProjectileMovement ProjectileMovement => m_ProjectileMovement;
-    
+
+    [SerializeField] private PoolableProjectile m_Poolable;
+    public PoolableProjectile PoolableProjectile => m_Poolable;
+
     public void SynchronizeWithProjectileData()
     {
         if (m_SpriteRenderer != null)
@@ -28,6 +31,12 @@ public class ProjectileSyncer : MonoBehaviour
             m_DamageDealer.ChangeDamageParams(m_ProjectileData.Damage, m_ProjectileData.SelfDestructOnCollision, m_ProjectileData.DamageOverTime, m_ProjectileData.DamagePerHit, m_ProjectileData.HitRate);
         if (m_ProjectileMovement != null)
             m_ProjectileMovement.SetMovingSpeed(m_ProjectileData.Speed);
+        if (m_Poolable != null)
+        {
+            m_Poolable.RecycleIfNotOnScreen();
+        }
+            
+        
     }
 
     public void SynchronizeWithProjectileData(ProjectileData data)
