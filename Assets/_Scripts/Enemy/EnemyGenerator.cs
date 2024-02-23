@@ -28,7 +28,6 @@ public class EnemyGenerator : MonoBehaviour, IRestartable
 
     private IEnumerator m_CurrentHandle;
 
-
     private float m_MinEnemyDifficulty;
     private float m_MaxEnemyDifficulty;
     private List<float> m_SortedDifficulties;
