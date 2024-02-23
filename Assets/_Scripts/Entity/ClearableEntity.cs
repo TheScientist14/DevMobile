@@ -1,19 +1,15 @@
 using UnityEngine;
 
-public interface IRestartable
-{
-    public void Restart();
-}
-
-public class RestartingEntity : MonoBehaviour
+// Should be factorised with RestartingEntity somehow
+public class ClearableEntity : MonoBehaviour
 {
     private GameStateMachine m_GameStateMachine;
-    private IRestartable[] m_ToRestart;
+    private IRecyclable[] m_ToRecycle;
 
     private void Awake()
     {
         m_GameStateMachine = GameManager.Get().GetStateMachine();
-        m_ToRestart = GetComponents<IRestartable>();
+        m_ToRecycle = GetComponents<IRecyclable>();
     }
 
     private void OnEnable()
@@ -28,10 +24,10 @@ public class RestartingEntity : MonoBehaviour
 
     private void OnStateChange(IGameState iPrevious, IGameState iCurrent)
     {
-        if (iCurrent is PlayGameState)
+        if (iPrevious is EndGameState)
         {
-            foreach (IRestartable restartable in m_ToRestart)
-                restartable.Restart();
+            foreach (IRecyclable recyclable in m_ToRecycle)
+                recyclable.Recycle();
         }
     }
 }

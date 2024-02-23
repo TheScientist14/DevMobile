@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PoolableProjectile : Poolable
+public class PoolableProjectile : Poolable, IRecyclable
 {
     private ProjectilePool m_projectilePool;
 

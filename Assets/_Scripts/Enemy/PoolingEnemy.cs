@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolingEnemy : Poolable
+public interface IRecyclable
+{
+    public void Recycle();
+}
+
+public class PoolingEnemy : Poolable, IRecyclable
 {
     [SerializeField] private string m_EnemyName = "Enemy";
     public string EnemyName => m_EnemyName;
