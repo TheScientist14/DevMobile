@@ -15,11 +15,6 @@ public class PoolBase<T> : MonoBehaviour
     [SerializeField]
     private bool _increasable = true;
 
-    protected virtual void Start()
-    {
-        PopulatePool();
-    }
-
     public void SetObjectToPool(T newObjectToPool)
     {
         _objectToPool = newObjectToPool;
@@ -89,5 +84,9 @@ public class PoolBase<T> : MonoBehaviour
         }
         _pooledObjects.Clear();
     }
-   
+
+    protected virtual void Start()
+    {
+        PopulatePool();
+    }
 }
